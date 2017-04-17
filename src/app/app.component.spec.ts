@@ -21,16 +21,17 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   }));
 
-  it(`should have as title 'ampe works!'`, async(() => {
+  it(`should have as title 'Angular Model Pattern'`, async(() => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.debugElement.componentInstance;
-    expect(app.title).toEqual('ampe works!');
+    expect(app.title).toEqual('Angular Model Pattern');
   }));
 
   it('should render title in a h1 tag', async(() => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.debugElement.nativeElement;
-    expect(compiled.querySelector('h1').textContent).toContain('ampe works!');
+    expect(compiled.querySelector('h1').textContent)
+      .toContain('Angular Model Pattern');
   }));
 });
