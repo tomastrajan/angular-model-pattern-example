@@ -1,4 +1,6 @@
-# AngularModelPatternExample
+# Model pattern for Angular by [@tomastrajan](https://twitter.com/tomastrajan) [![Build Status](https://travis-ci.org/tomastrajan/angular-model-pattern-example.svg?branch=master)](https://travis-ci.org/tomastrajan/angular-model-pattern-example)
+                           
+[Demo](http://tomastrajan.github.io/angular-model-pattern-example/) 
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.0.0.
 

@@ -1,6 +1,7 @@
 {
   "name": "angular-model-pattern-example",
   "version": "0.0.0",
+  "author": "Tomas Trajan <tomas.trajan@gmail.com>",
   "license": "MIT",
   "scripts": {
     "ng": "ng",
@@ -8,7 +9,14 @@
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+
+    "build:prod": "ng build --target production --aot --vendor-chunk --extract-css --output-hashing all --stats-json",
+    "build:travisci": "ng build --target production --aot --vendor-chunk --extract-css --output-hashing all --stats-json --deploy-url /angular-model-pattern-example/ --base-href /angular-model-pattern-example",
+    "clean": "rm -rf ./dist/",
+    "server": "cd dist && http-server",
+    "prod": "npm run clean && npm run build:prod && npm run server",
+    "travisci": "npm run clean && ng lint && ng test --browsers PhantomJS --single-run --reporters spec && npm run build:travisci"
   },
   "private": true,
   "dependencies": {
