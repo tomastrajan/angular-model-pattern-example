@@ -9,6 +9,6 @@ describe('angular-model-pattern-example App', () => {
 
   it('should display message saying app works', () => {
     page.navigateTo();
-    expect(page.getParagraphText()).toEqual('ampe works!');
+    expect(page.getParagraphText()).toEqual('Angular Model Pattern');
   });
 });

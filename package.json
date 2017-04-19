@@ -10,6 +10,7 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
+    "watch": "ng test --browsers PhantomJS --reporters spec",
     "build:prod": "ng build --target production --aot --vendor-chunk --extract-css --output-hashing all --stats-json",
     "build:travisci": "ng build --target production --aot --vendor-chunk --extract-css --output-hashing all --stats-json --deploy-url /angular-model-pattern-example/ --base-href /angular-model-pattern-example",
     "clean": "rm -rf ./dist/",
@@ -19,6 +20,7 @@
   },
   "private": true,
   "dependencies": {
+    "@angular/animations": "^4.0.0",
     "@angular/common": "^4.0.0",
     "@angular/compiler": "^4.0.0",
     "@angular/core": "^4.0.0",

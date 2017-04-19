@@ -1,3 +1,31 @@
-<p>
-  todos works!
-</p>
+<div class="row">
+  <div class="col s6">
+    <h5>Add new todo</h5>
+    <input type="text"
+           [value]="newTodo"
+           (keyup)="onNewTodoChange($event.target.value)" />
+    <button class="btn waves-effect waves-light"
+            (click)="onAddTodo()"
+            [disabled]="newTodo.length < 3">
+      <i class="material-icons left">add</i> Add todo
+    </button>
+    <button class="btn waves-effect waves-light"
+            (click)="onClearDoneTodosClick()"
+            [disabled]="counts.done === 0">
+      <i class="material-icons left">delete</i> Clear done todos
+    </button>
+  </div>
+  <div class="col s6">
+    <h5>Todo list</h5>
+    <ul>
+      <li *ngFor="let todo of todosService.todos | async" [@flyInOut]>
+        <input type="checkbox"
+               [value]="todo.done"
+               [checked]="todo.done"
+               [id]="todo.name"
+               (click)="onTodoClick(todo)" />
+        <label [for]="todo.name">{{todo.name}}</label>
+      </li>
+    </ul>
+  </div>
+</div>
