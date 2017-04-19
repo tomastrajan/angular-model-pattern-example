@@ -1,14 +1,30 @@
-.brand-logo {
+@import "variables";
 
-  span {
-    padding: 0 0 0 70px;
+.nav-wrapper {
+
+  .brand-logo {
+
+    span {
+      padding: 0 0 0 70px;
+    }
+
+    img {
+      position: absolute;
+      top: 10%;
+      left: 10px;
+      height: 80%;
+    }
+
   }
 
-  img {
-    position: absolute;
-    top: 10%;
-    left: 10px;
-    height: 80%;
+  ul {
+    li {
+      a {
+       &.active {
+         background-color: $primary-color-dark;
+       }
+      }
+    }
   }
 }
 

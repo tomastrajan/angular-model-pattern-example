@@ -21,6 +21,9 @@
       "styles": [
         "styles.scss"
       ],
+      "stylePreprocessorOptions": {
+        "includePaths": [""]
+      },
       "scripts": [
         "../node_modules/materialize-css/node_modules/jquery/dist/jquery.min.js",
         "../node_modules/materialize-css/dist/js/materialize.min.js"
