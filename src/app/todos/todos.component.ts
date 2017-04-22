@@ -56,6 +56,10 @@ export class TodosComponent implements OnInit, OnDestroy {
     this.newTodo = '';
   }
 
+  onClearTodoInput() {
+    this.newTodo = '';
+  }
+
   onTodoClick(todo: Todo) {
     this.todosService.toggleTodo(todo.name);
   }

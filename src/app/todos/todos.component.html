@@ -1,21 +1,23 @@
 <div class="row">
-  <div class="col s6">
+  <div class="col m6 s12">
     <h5>Add new todo</h5>
     <input type="text"
-           [value]="newTodo"
-           (keyup)="onNewTodoChange($event.target.value)" />
-    <button class="btn waves-effect waves-light"
+           class="new"
+           (keyup)="onNewTodoChange($event.target.value)"
+           (keyup.enter)="onAddTodo()"
+           (keyup.escape)="onClearTodoInput()" />
+    <button class="btn waves-effect waves-light add"
             (click)="onAddTodo()"
             [disabled]="newTodo.length < 3">
       <i class="material-icons left">add</i> Add todo
     </button>
-    <button class="btn waves-effect waves-light"
+    <button class="btn waves-effect waves-light clear"
             (click)="onClearDoneTodosClick()"
             [disabled]="counts.done === 0">
       <i class="material-icons left">delete</i> Clear done todos
     </button>
   </div>
-  <div class="col s6">
+  <div class="col m6 s12">
     <h5>Todo list</h5>
     <ul>
       <li *ngFor="let todo of todosService.todos | async" [@flyInOut]>

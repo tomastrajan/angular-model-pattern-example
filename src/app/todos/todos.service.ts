@@ -15,7 +15,7 @@ export class TodosService implements Resolve<boolean> {
 
   private _todos: BehaviorSubject<Todo[]> = new BehaviorSubject([]);
 
-  todos = this._todos.asObservable();
+  todos = this._todos.asObservable().map(todos => this.clone(todos));
   todosCounts: Observable<TodosCounts> = this.todos.map(todos => {
     return {
       active: todos.filter(t => !t.done).length,
@@ -41,8 +41,7 @@ export class TodosService implements Resolve<boolean> {
 
   addTodo(name: string) {
     const todos = this.getTodos();
-    todos.push({ name, done: false });
-    this.setTodos(todos);
+    this.setTodos(todos.concat([{ name, done: false }]));
   }
 
   toggleTodo(name: string) {
@@ -65,7 +64,11 @@ export class TodosService implements Resolve<boolean> {
   }
 
   private setTodos(todos: Todo[]) {
-    this._todos.next([...todos]);
+    this._todos.next(todos);
+  }
+
+  private clone<T>(item: T): T {
+      return JSON.parse(JSON.stringify(item));
   }
 
 }
