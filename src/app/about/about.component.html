@@ -6,8 +6,10 @@
   </div>
   <div class="row">
     <div class="col s6">
+      <h5>TLDR</h5>
       <blockquote>
-        tldr; kinda like redux but only kinda
+        Imagine Redux with explicit function calls instead of actions,
+        one store (model) per feature and immutable data exposed as observable
       </blockquote>
     </div>
     <div class="col s6">
@@ -19,6 +21,20 @@
         <li>Angular way (standard injectable angular service)</li>
         <li>Model per domain concern (eg: every service has it's own model)</li>
       </ul>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col m6 s12 feature">
+      <h5><i class="material-icons">call_made</i> Explicit function calls</h5>
+      <p>Explicit function calls are used to perform all model state mutations.
+        This enables you to step through the execution call stack with ease...</p>
+    </div>
+    <div class="col m6 s12 feature">
+      <h5><i class="material-icons">content_copy</i> Immutable model</h5>
+      <p>Newer worry about undesired side-effects! Your data is exposed as an
+        Observable which clones underlying data to prevent accidental mutations
+        by model consumers...
+      </p>
     </div>
   </div>
 </div>
