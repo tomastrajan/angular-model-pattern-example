@@ -5,6 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
 import { AppRoutingModule } from './app-routing.module';
+import { CoreModule } from './core/core.module';
 import { AppComponent } from './app.component';
 import { TodosComponent } from './todos/todos.component';
 import { RestComponent } from './rest/rest.component';
@@ -23,7 +24,8 @@ import { TodosService } from './todos/todos.service';
     BrowserModule,
     FormsModule,
     HttpModule,
-    AppRoutingModule
+    AppRoutingModule,
+    CoreModule
   ],
   providers: [TodosService],
   bootstrap: [AppComponent]

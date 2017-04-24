@@ -39,7 +39,7 @@ export class TodosComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.newTodo = '';
-    this.subs.push(this.todosService.todosCounts
+    this.subs.push(this.todosService.todosCounts$
       .subscribe(counts => (this.counts = counts)));
   }
 
@@ -66,6 +66,10 @@ export class TodosComponent implements OnInit, OnDestroy {
 
   onClearDoneTodosClick() {
     this.todosService.clearDoneTodos();
+  }
+
+  todosTrackBy(index, todo) {
+    return todo.name;
   }
 
 }

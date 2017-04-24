@@ -4,32 +4,32 @@ import {
   ActivatedRouteSnapshot,
   RouterStateSnapshot
 } from '@angular/router';
-import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/of';
 import 'rxjs/add/operator/map';
+import { ModelService, Model } from '../core';
 
 @Injectable()
 export class TodosService implements Resolve<boolean> {
 
+  private model: Model<Todo[]>;
+  todos$: Observable<Todo[]>;
+  todosCounts$: Observable<TodosCounts>;
 
-  private _todos: BehaviorSubject<Todo[]> = new BehaviorSubject([]);
-
-  todos = this._todos.asObservable().map(todos => this.clone(todos));
-  todosCounts: Observable<TodosCounts> = this.todos.map(todos => {
-    return {
+  constructor(private modelService: ModelService) {
+    this.model = this.modelService.createModel(<Todo[]> []);
+    this.todos$ = this.model.data$;
+    this.todosCounts$ = this.todos$.map(todos => ({
       active: todos.filter(t => !t.done).length,
       done: todos.filter(t => t.done).length
-    };
-  });
-
-  constructor() {}
+    }));
+  }
 
   resolve(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
   ): Observable<boolean> {
-    this.setTodos([
+    this.model.setData([
       { name: 'Try Todos example', done: false },
       { name: 'Try Rest example', done: false },
       { name: 'Try Lazy example', done: false },
@@ -40,35 +40,23 @@ export class TodosService implements Resolve<boolean> {
   }
 
   addTodo(name: string) {
-    const todos = this.getTodos();
-    this.setTodos(todos.concat([{ name, done: false }]));
+    const todos = this.model.getData();
+    this.model.setData(todos.concat([{ name, done: false }]));
   }
 
   toggleTodo(name: string) {
-    const todos = this.getTodos();
+    const todos = this.model.getData();
     todos.forEach(t => {
       if (t.name === name) {
         t.done = !t.done;
       }
     });
-    this.setTodos(todos);
+    this.model.setData(todos);
   }
 
   clearDoneTodos() {
-    const todos = this.getTodos();
-    this.setTodos(todos.filter(t => !t.done));
-  }
-
-  private getTodos(): Todo[] {
-    return this._todos.getValue();
-  }
-
-  private setTodos(todos: Todo[]) {
-    this._todos.next(todos);
-  }
-
-  private clone<T>(item: T): T {
-      return JSON.parse(JSON.stringify(item));
+    const todos = this.model.getData();
+    this.model.setData(todos.filter(t => !t.done));
   }
 
 }
@@ -76,6 +64,7 @@ export class TodosService implements Resolve<boolean> {
 export interface Todo {
   name: string;
   done: boolean;
+  test?: string;
 }
 
 export interface TodosCounts {

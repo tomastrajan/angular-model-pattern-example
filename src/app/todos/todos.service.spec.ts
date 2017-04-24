@@ -1,11 +1,12 @@
-import { TestBed, inject } from '@angular/core/testing';
+import { TestBed, inject } from "@angular/core/testing";
 
-import { TodosService } from './todos.service';
+import { ModelService } from "../core";
+import { TodosService } from "./todos.service";
 
 describe('TodosService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [TodosService]
+      providers: [ModelService, TodosService]
     });
   });
 
@@ -13,7 +14,7 @@ describe('TodosService', () => {
     inject([TodosService], (service: TodosService) => {
       service.resolve(undefined, undefined);
 
-      service.todos.subscribe(todos => {
+      service.todos$.subscribe(todos => {
         expect(todos.length).toBe(5);
         expect(todos[0].name).toBe('Try Todos example');
       });
@@ -23,7 +24,7 @@ describe('TodosService', () => {
     inject([TodosService], (service: TodosService) => {
       service.addTodo('test todo');
 
-      service.todos.subscribe(todos => {
+      service.todos$.subscribe(todos => {
         expect(todos.length).toBe(1);
         expect(todos[0].name).toBe('test todo');
       });
@@ -34,7 +35,7 @@ describe('TodosService', () => {
       service.addTodo('test todo');
       service.toggleTodo('test todo');
 
-      service.todos.subscribe(todos => {
+      service.todos$.subscribe(todos => {
         expect(todos[0].done).toBe(true);
       });
     }));
@@ -45,7 +46,7 @@ describe('TodosService', () => {
       service.toggleTodo('test todo');
       service.clearDoneTodos();
 
-      service.todos.subscribe(todos => {
+      service.todos$.subscribe(todos => {
         expect(todos.length).toBe(0);
       });
     }));

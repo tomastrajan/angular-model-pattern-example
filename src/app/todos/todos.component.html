@@ -3,6 +3,7 @@
     <h5>Add new todo</h5>
     <input type="text"
            class="new"
+           [value]="newTodo"
            (keyup)="onNewTodoChange($event.target.value)"
            (keyup.enter)="onAddTodo()"
            (keyup.escape)="onClearTodoInput()" />
@@ -20,7 +21,7 @@
   <div class="col m6 s12">
     <h5>Todo list</h5>
     <ul>
-      <li *ngFor="let todo of todosService.todos | async" [@flyInOut]>
+      <li *ngFor="let todo of todosService.todos$ | async; trackBy: todosTrackBy" [@flyInOut]>
         <input type="checkbox"
                [value]="todo.done"
                [checked]="todo.done"
