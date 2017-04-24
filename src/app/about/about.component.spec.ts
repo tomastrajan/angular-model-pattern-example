@@ -23,11 +23,11 @@ describe('AboutComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should render title in a h1 tag', async(() => {
+  it('should render title in a h4 tag', async(() => {
     fixture = TestBed.createComponent(AboutComponent);
     fixture.detectChanges();
     const compiled = fixture.debugElement.nativeElement;
-    expect(compiled.querySelector('h1').textContent)
+    expect(compiled.querySelector('h4').textContent)
       .toContain('Angular Model Pattern');
   }));
 

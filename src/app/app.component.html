@@ -1,24 +1,54 @@
-<nav>
-  <div class="nav-wrapper">
-    <a data-activates="slide-out" class="button-collapse">
-      <i class="material-icons">menu</i>
-    </a>
-    <a routerLink="about" class="brand-logo">
-      <img src="https://tomastrajan.github.io/angular-model-pattern-example/assets/logo.png" />
-      <span>Angular Model Pattern</span>
-    </a>
-    <ul id="nav-mobile" class="right hide-on-med-and-down">
+<div class="page-content">
+  <nav>
+    <div class="nav-wrapper">
+      <a data-activates="slide-out" class="button-collapse">
+        <i class="material-icons">menu</i>
+      </a>
+      <a routerLink="about" class="brand-logo">
+        <img src="https://tomastrajan.github.io/angular-model-pattern-example/assets/logo.png" />
+        <span>Angular Model Pattern</span>
+      </a>
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+        <li><a routerLinkActive="active" routerLink="about">About</a></li>
+        <li><a routerLinkActive="active" routerLink="todos">Todos</a></li>
+        <li><a routerLinkActive="active" routerLink="rest">Rest</a></li>
+        <li><a routerLinkActive="active" routerLink="lazy">Lazy</a></li>
+      </ul>
+    </div>
+    <ul id="slide-out" class="side-nav">
       <li><a routerLinkActive="active" routerLink="about">About</a></li>
       <li><a routerLinkActive="active" routerLink="todos">Todos</a></li>
       <li><a routerLinkActive="active" routerLink="rest">Rest</a></li>
       <li><a routerLinkActive="active" routerLink="lazy">Lazy</a></li>
     </ul>
+  </nav>
+  <router-outlet></router-outlet>
+  <div class="page-content-push"></div>
+</div>
+<footer class="page-footer">
+  <div class="container">
+    <div class="row">
+      <div class="col l6 s12">
+        <h5 class="white-text">Angular Model Pattern</h5>
+        <p class="grey-text text-lighten-4 truncate">
+          Angular Model Pattern for simple and predictable state management in your Angular (2+) applications
+        </p>
+      </div>
+      <div class="col l4 offset-l2 s12">
+        <h5 class="white-text">Navigation</h5>
+        <ul>
+          <li><a class="grey-text text-lighten-3" routerLinkActive="active" routerLink="about">About</a></li>
+          <li><a class="grey-text text-lighten-3" routerLinkActive="active" routerLink="todos">Todos</a></li>
+          <li><a class="grey-text text-lighten-3" routerLinkActive="active" routerLink="rest">Rest</a></li>
+          <li><a class="grey-text text-lighten-3" routerLinkActive="active" routerLink="lazy">Lazy</a></li>
+        </ul>
+      </div>
+    </div>
   </div>
-  <ul id="slide-out" class="side-nav">
-    <li><a routerLinkActive="active" routerLink="about">About</a></li>
-    <li><a routerLinkActive="active" routerLink="todos">Todos</a></li>
-    <li><a routerLinkActive="active" routerLink="rest">Rest</a></li>
-    <li><a routerLinkActive="active" routerLink="lazy">Lazy</a></li>
-  </ul>
-</nav>
-<router-outlet></router-outlet>
+  <div class="footer-copyright">
+    <div class="container">
+      © {{year}} Tomas Trajan
+      <a class="grey-text text-lighten-4 right" href="https://medium.com/@tomastrajan">Medium</a>
+    </div>
+  </div>
+</footer>

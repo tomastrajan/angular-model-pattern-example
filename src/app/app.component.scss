@@ -1,5 +1,21 @@
 @import "variables";
 
+.page-content {
+  min-height: 100%;
+  margin-bottom: -248px;
+
+  @media #{$medium-and-down} {
+    margin-bottom: -323px;
+  }
+}
+.page-footer, .page-content-push {
+  height: 248px;
+
+  @media #{$medium-and-down} {
+    height: 323px;
+  }
+}
+
 .nav-wrapper {
 
   .brand-logo {

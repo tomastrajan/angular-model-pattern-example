@@ -3,3 +3,7 @@
 $roboto-font-path: "../node_modules/materialize-css/fonts/roboto/";
 @import "variables";
 @import "~materialize-css/sass/materialize";
+
+html, body {
+  height: 100%;
+}

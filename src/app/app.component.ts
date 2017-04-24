@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AppComponent implements OnInit {
 
+  year: number = (new Date).getFullYear();
+
   ngOnInit(): void {
     $('.button-collapse').sideNav();
   }
