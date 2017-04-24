@@ -23,7 +23,7 @@ describe('ModelService', () => {
     inject([ModelService], (service: ModelService) => {
       const model = service.createModel(<TestModel> { value: 'test' });
 
-      expect(model.getData()).toEqual({ value: 'test' })
+      expect(model.getData()).toEqual({ value: 'test' });
     }));
 
   it('should expose raw data setter',
@@ -32,7 +32,7 @@ describe('ModelService', () => {
 
       model.setData({ value: 'changed' });
 
-      expect(model.getData()).toEqual({ value: 'changed' })
+      expect(model.getData()).toEqual({ value: 'changed' });
     }));
 
   it('should clone exposed model data in observable to prevent mutations',
