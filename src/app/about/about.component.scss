@@ -1,4 +1,28 @@
+@import "variables";
+
+.intro {
+  padding: 80px 0;
+  background-color: $primary-color-light;
+  color: #fff;
+
+  h3 {
+    text-transform: uppercase;
+  }
+
+  .description {
+    font-size: 20px;
+    padding: 0 20%;
+  }
+
+  .fa {
+    position: relative;
+    top: -3px;
+    left: -10px;
+  }
+}
+
 .feature {
+  margin-bottom: 40px;
   p {
     margin: 0 0 0 31px;
   }

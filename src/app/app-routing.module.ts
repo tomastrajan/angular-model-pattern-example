@@ -22,9 +22,6 @@ const routes: Routes = [
   }, {
     path: 'rest',
     component: RestComponent
-  }, {
-    path: 'lazy',
-    loadChildren: 'app/lazy/lazy.module#LazyModule',
   }
 ];
 

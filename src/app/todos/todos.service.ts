@@ -33,7 +33,6 @@ export class TodosService implements Resolve<boolean> {
     this.model.setData([
       { name: 'Try Todos example', done: false },
       { name: 'Try Rest example', done: false },
-      { name: 'Try Lazy example', done: false },
       { name: 'Read blog post', done: false },
       { name: 'Have fun!', done: false }
     ]);

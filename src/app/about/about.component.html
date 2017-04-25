@@ -1,39 +1,55 @@
+<div class="row intro">
+  <div class="col s12 center-align">
+    <h3>Angular Model Pattern</h3>
+    <br />
+    <p class="description">
+      Imagine Redux with <strong>explicit function calls</strong> instead of action creators,
+      one <strong>model (store) per feature</strong> and <strong>immutable data</strong> exposed as RxJS observables
+    </p>
+    <a class="waves-effect waves-light btn" href="https://github.com/tomastrajan/angular-model-pattern-example">
+      <i class="fa fa-github fa-lg"></i> Check on Github
+    </a>
+  </div>
+</div>
 <div class="container">
   <div class="row">
-    <div class="col s12">
-      <h4>Angular Model Pattern</h4>
-    </div>
+    <div class="col s12 text-center"><h3>Features</h3></div>
   </div>
   <div class="row">
-    <div class="col s6">
-      <h5>TLDR</h5>
-      <blockquote>
-        Imagine Redux with explicit function calls instead of actions,
-        one store (model) per feature and immutable data exposed as observable
-      </blockquote>
-    </div>
-    <div class="col s6">
-      <h5>Features</h5>
-      <ul class="browser-default">
-        <li>One way data flow (flux)</li>
-        <li>Explicit service function calls (instead of actions / events)</li>
-        <li>Immutable data model (store)</li>
-        <li>Angular way (standard injectable angular service)</li>
-        <li>Model per domain concern (eg: every service has it's own model)</li>
-      </ul>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col m6 s12 feature">
-      <h5><i class="material-icons">call_made</i> Explicit function calls</h5>
-      <p>Explicit function calls are used to perform all model state mutations.
-        This enables you to step through the execution call stack with ease...</p>
-    </div>
     <div class="col m6 s12 feature">
       <h5><i class="material-icons">content_copy</i> Immutable model</h5>
       <p>Newer worry about undesired side-effects! Your data is exposed as an
-        Observable which clones underlying data to prevent accidental mutations
-        by model consumers...
+        Observable which  clones underlying data <strong>by default</strong>.
+        This prevent accidental mutations by model consumers.
+      </p>
+    </div>
+    <div class="col m6 s12 feature">
+      <h5><i class="material-icons">call_made</i> Explicit function calls</h5>
+      <p>Explicit function calls are used to perform all model state mutations.
+        This enables you to step through the execution call stack with ease.</p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col m6 s12 feature">
+      <h5><i class="material-icons">refresh</i> Model per domain / feature</h5>
+      <p>Create multiple models to separate your state into manageable chunks.
+        Combine state from multiple models using RxJS <strong>.combineLatest()</strong>
+        or some of the many other available operators.
+      </p>
+    </div>
+    <div class="col m6 s12 feature">
+      <h5><i class="material-icons">refresh</i> One way data flow</h5>
+      <p>Manage your state in simple manner with RxJS Observables
+        powered one way data flow. Components simply subscribe to model updates
+        with <strong>| async</strong> pipe or explicitly in <strong>ngOnInit()</strong>
+      </p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col m6 s12 feature">
+      <h5><i class="material-icons">add_box</i> Angular way</h5>
+      <p>Create multiple instances of your model by using standard Angular
+        dependency injection (DI) mechanism with build in factory support.
       </p>
     </div>
   </div>
