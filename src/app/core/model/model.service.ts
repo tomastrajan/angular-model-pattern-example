@@ -5,38 +5,38 @@ import 'rxjs/add/observable/of';
 import 'rxjs/add/operator/map';
 
 @Injectable()
-export class ModelService {
+export class Model<T> {
 
-  private Model = class <T> {
+  private _data: BehaviorSubject<T>;
 
-    private _data: BehaviorSubject<T>;
+  data$: Observable<T>;
 
-    data$: Observable<T>;
+  constructor(initialData: any, immutable: boolean) {
+    this._data = new BehaviorSubject(initialData);
+    this.data$ = this._data.asObservable()
+      .map(data => immutable ? JSON.parse(JSON.stringify(data)) : data);
+  }
 
-    constructor(initialData: T) {
-      this._data = new BehaviorSubject(initialData);
-      this.data$ = this._data.asObservable()
-        .map(data => JSON.parse(JSON.stringify(data)));
-    }
+  getData(): T {
+    return this._data.getValue();
+  }
 
-    getData(): T {
-      return this._data.getValue();
-    }
-
-    setData(data: T) {
-      this._data.next(data);
-    }
-
-  };
-
-  createModel<T>(initialData: T): Model<T> {
-    return new this.Model<T>(initialData);
+  setData(data: T) {
+    this._data.next(data);
   }
 
 }
 
-export interface Model<T> {
-  data$: Observable<T>;
-  getData(): T;
-  setData(data: T): void;
+export class ModelFactory<T> {
+  create(initialData: T, immutable: boolean = true): Model<T> {
+    return new Model<T>(initialData, immutable);
+  }
 }
+
+export function useModelFactory() {
+  return new ModelFactory();
+}
+
+export const MODEL_PROVIDER = {
+  provide: ModelFactory, useFactory: useModelFactory
+};

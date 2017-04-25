@@ -2,7 +2,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
-import { ModelService } from '../core';
+import { MODEL_PROVIDER } from '../core';
 import { TodosComponent } from './todos.component';
 import { TodosService } from './todos.service';
 
@@ -14,7 +14,7 @@ describe('TodosComponent', () => {
     TestBed.configureTestingModule({
       imports: [NoopAnimationsModule],
       declarations: [TodosComponent],
-      providers: [ModelService, TodosService]
+      providers: [MODEL_PROVIDER, TodosService]
     })
     .compileComponents();
   }));

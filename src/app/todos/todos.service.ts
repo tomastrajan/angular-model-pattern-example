@@ -7,17 +7,18 @@ import {
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/of';
 import 'rxjs/add/operator/map';
-import { ModelService, Model } from '../core';
+import { ModelFactory, Model } from '../core';
 
 @Injectable()
 export class TodosService implements Resolve<boolean> {
 
   private model: Model<Todo[]>;
+
   todos$: Observable<Todo[]>;
   todosCounts$: Observable<TodosCounts>;
 
-  constructor(private modelService: ModelService) {
-    this.model = this.modelService.createModel(<Todo[]> []);
+  constructor(private modelFactory: ModelFactory<Todo[]>) {
+    this.model = this.modelFactory.create([]);
     this.todos$ = this.model.data$;
     this.todosCounts$ = this.todos$.map(todos => ({
       active: todos.filter(t => !t.done).length,
@@ -64,7 +65,6 @@ export class TodosService implements Resolve<boolean> {
 export interface Todo {
   name: string;
   done: boolean;
-  test?: string;
 }
 
 export interface TodosCounts {
