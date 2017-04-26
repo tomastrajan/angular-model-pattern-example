@@ -1,14 +1,15 @@
-$primary-color: #5a0f7b;
-$primary-color-light: lighten($primary-color, 10%);
+$primary-color: #411e54;
+$primary-color-light: lighten($primary-color, 5%);
+$primary-color-light: lighten($primary-color, 5%);
 $primary-color-dark: darken($primary-color, 5%);
 
 $secondary-color: #eba74c;
-$secondary-color-light: lighten($secondary-color, 15%);
-$secondary-color-dark: darken($secondary-color, 15%);
+$secondary-color-light: lighten($secondary-color, 5%);
+$secondary-color-dark: darken($secondary-color, 5%);
 
 $success-color: #8bc34a;
 $error-color: #e53935;
-$link-color: #00e676;
+$link-color: #2ab786;
 
 $small-screen-up: 601px;
 $medium-screen-up: 993px;

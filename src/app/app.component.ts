@@ -10,7 +10,7 @@ export class AppComponent implements OnInit {
   year: number = (new Date).getFullYear();
 
   ngOnInit(): void {
-    $('.button-collapse').sideNav();
+    $('.button-collapse').sideNav({ closeOnClick: true });
   }
 
 }

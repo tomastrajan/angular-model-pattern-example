@@ -4,6 +4,9 @@ import { AboutComponent } from './about/about.component';
 import { TodosComponent } from './todos/todos.component';
 import { RestComponent } from './rest/rest.component';
 import { TodosService } from './todos/todos.service';
+import {
+  GettingStartedComponent
+} from './getting-started/getting-started.component';
 
 const routes: Routes = [
   {
@@ -13,6 +16,9 @@ const routes: Routes = [
   }, {
     path: 'about',
     component: AboutComponent
+  }, {
+    path: 'getting-started',
+    component: GettingStartedComponent
   }, {
     path: 'todos',
     component: TodosComponent,

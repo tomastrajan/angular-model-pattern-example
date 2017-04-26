@@ -2,17 +2,17 @@
 
 .page-content {
   min-height: 100%;
-  margin-bottom: -248px;
+  margin-bottom: -250px;
 
   @media #{$medium-and-down} {
-    margin-bottom: -323px;
+    margin-bottom: -320px;
   }
 }
 .page-footer, .page-content-push {
-  height: 248px;
+  height: 250px;
 
   @media #{$medium-and-down} {
-    height: 323px;
+    height: 320px;
   }
 }
 
@@ -40,12 +40,20 @@
          background-color: $primary-color-dark;
        }
       }
+
+      &.icon {
+        span {
+          position: relative;
+          top: 5px;
+        }
+      }
     }
   }
 }
 
 
 .footer-copyright {
+  background-color: $primary-color-dark;
   a {
     margin: 0 0 0 15px;
   }

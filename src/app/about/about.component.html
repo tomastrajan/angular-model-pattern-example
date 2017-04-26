@@ -1,11 +1,15 @@
 <div class="row intro">
+  <div class="background"></div>
   <div class="col s12 center-align">
-    <h3>Angular Model Pattern</h3>
+    <h1>Angular Model Pattern</h1>
     <br />
     <p class="description">
-      Imagine Redux with <strong>explicit function calls</strong> instead of action creators,
-      one <strong>model (store) per feature</strong> and <strong>immutable data</strong> exposed as RxJS observables
+      Imagine simple and predictable state management with <strong>explicit function calls</strong>,
+      one <strong>model (store) per feature</strong> and <strong>immutable data</strong> exposed as RxJS Observables
     </p>
+    <a class="waves-effect waves-light btn start" [routerLink]="['..', 'getting-started']">
+      <i class="fa fa-star fa-lg"></i> Getting started
+    </a>
     <a class="waves-effect waves-light btn" href="https://github.com/tomastrajan/angular-model-pattern-example">
       <i class="fa fa-github fa-lg"></i> Check on Github
     </a>
@@ -17,39 +21,43 @@
   </div>
   <div class="row">
     <div class="col m6 s12 feature">
-      <h5><i class="material-icons">content_copy</i> Immutable model</h5>
-      <p>Newer worry about undesired side-effects! Your data is exposed as an
-        Observable which  clones underlying data <strong>by default</strong>.
-        This prevent accidental mutations by model consumers.
+      <h5><i class="material-icons">refresh</i> One way data flow</h5>
+      <p>One way data flow proved to be the most effective and understandable way
+        of managing application state. Components simply subscribe to model state
+        exposed as RxJS Observable with <strong>| async</strong> pipe in their template
+        or explicitly by calling <strong>.subscribe()</strong> in <strong>ngOnInit()</strong>.
       </p>
     </div>
     <div class="col m6 s12 feature">
-      <h5><i class="material-icons">call_made</i> Explicit function calls</h5>
-      <p>Explicit function calls are used to perform all model state mutations.
-        This enables you to step through the execution call stack with ease.</p>
+      <h5><i class="material-icons">content_copy</i> Immutable model</h5>
+      <p>Stop worrying about unintended side-effects! Your data is accessible through
+        an RxJS Observable which clones underlying data <strong>by default</strong>
+        and prevents accidental mutations by model consumers. Immutability can be
+        overridden by passing optional flag or custom clone function.
+      </p>
     </div>
   </div>
   <div class="row">
     <div class="col m6 s12 feature">
-      <h5><i class="material-icons">refresh</i> Model per domain / feature</h5>
+      <h5><i class="material-icons">folder</i> One model per feature</h5>
       <p>Create multiple models to separate your state into manageable chunks.
         Combine state from multiple models using RxJS <strong>.combineLatest()</strong>
-        or some of the many other available operators.
+        or one of the many available operators.
       </p>
     </div>
     <div class="col m6 s12 feature">
-      <h5><i class="material-icons">refresh</i> One way data flow</h5>
-      <p>Manage your state in simple manner with RxJS Observables
-        powered one way data flow. Components simply subscribe to model updates
-        with <strong>| async</strong> pipe or explicitly in <strong>ngOnInit()</strong>
+      <h5><i class="material-icons">call_made</i> Explicit function calls</h5>
+      <p>Model is updated by explicit calls to vanilla service methods which
+        are easy to understand and debug. Step through the call stack from
+        component event handler to model data setter - one function call at the time!
       </p>
     </div>
   </div>
   <div class="row">
     <div class="col m6 s12 feature">
       <h5><i class="material-icons">add_box</i> Angular way</h5>
-      <p>Create multiple instances of your model by using standard Angular
-        dependency injection (DI) mechanism with build in factory support.
+      <p>Create <strong>multiple instances</strong> of your model by using standard Angular
+        dependency injection mechanism and build in factory support.
       </p>
     </div>
   </div>

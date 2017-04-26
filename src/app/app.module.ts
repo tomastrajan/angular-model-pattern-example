@@ -11,13 +11,15 @@ import { TodosComponent } from './todos/todos.component';
 import { RestComponent } from './rest/rest.component';
 import { AboutComponent } from './about/about.component';
 import { TodosService } from './todos/todos.service';
+import { GettingStartedComponent } from './getting-started/getting-started.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     TodosComponent,
     RestComponent,
-    AboutComponent
+    AboutComponent,
+    GettingStartedComponent
   ],
   imports: [
     BrowserAnimationsModule,

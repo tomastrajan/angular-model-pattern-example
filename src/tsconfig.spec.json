@@ -5,10 +5,7 @@
     "module": "commonjs",
     "target": "es5",
     "baseUrl": "",
-    "types": [
-      "jasmine",
-      "node",
-      "jquery"
+    "types": ["jasmine", "node", "jquery"
     ]
   },
   "files": [

@@ -1,0 +1,77 @@
+<div class="container">
+  <div class="row">
+    <div class="col s12">
+      <h3>Getting started</h3>
+      <p>As the name <strong>"Angular Model Pattern"</strong> says, it's a pattern
+      not a library so there is literally <strong>zero dependencies</strong> needed
+        to start using it in your own project.
+      </p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col s12">
+      <h4>1. Create <code>model.service.ts</code></h4>
+      <p>Create <code><a href="https://github.com/tomastrajan/angular-model-pattern-example/blob/master/src/app/core/model/model.service.ts">model.service.ts</a></code> file in your core module with the following content...</p>
+      <pre>
+        <code class="typescript">
+{{fileModelService}}
+        </code>
+      </pre>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col s12">
+      <h4>2. Provide model service in your <code>core.module.ts</code></h4>
+      <p>Import <code>MODEL_PROVIDER</code> constant and add it to <code>providers</code>
+        of your <code>CoreModule</code>. (Service can also be provided in
+        <code>AppModule</code> in case you don't use core module)</p>
+      <pre>
+        <code class="typescript">
+{{fileCoreModule}}
+        </code>
+      </pre>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col s12">
+      <h4>3. Use model in your business service</h4>
+      <p>Import <code>ModelFactory</code> in your service, inject it into
+      constructor using Angular dependency injection mechanism and create model instance.
+      </p>
+      <p>
+        Expose model's data as a variable with descriptive name
+        (eg: <code>todos$: Todo[] = this.model.data$</code>) to be consumed by
+        the components which import the service.
+      </p>
+      <p>
+        Implement model mutation inside of self-contained service methods which
+        retrieve model state with <code>this.model.getData()</code>,
+        perform necessary mutations and set new state using <code>this.model.setData(newData)</code>.
+      </p>
+      <p>Check full example of <code><a href="https://github.com/tomastrajan/angular-model-pattern-example/blob/master/src/app/todos/todos.service.ts">todos.service.ts</a></code>
+        and <code><a href="https://github.com/tomastrajan/angular-model-pattern-example/blob/master/src/app/todos/todos.component.ts">todos.component.ts</a></code>
+        on Gihub.</p>
+      <pre>
+        <code class="typescript">
+{{fileBusinessService}}
+        </code>
+      </pre>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col s12">
+      <h4>4. Optionally add model service tests</h4>
+      <p>Create <code>model.service.spec.ts</code> file next to your
+        <code>model.service.ts</code> file and populate it with following content.
+        Tests can help you in situation when you want to customize model service
+        to better accommodate to your specific needs.
+        Check original file on <a href="https://github.com/tomastrajan/angular-model-pattern-example/blob/master/src/app/core/model/model.service.spec.ts">Github</a>.
+      </p>
+      <pre>
+        <code class="typescript">
+{{fileModelServiceTests}}
+        </code>
+      </pre>
+    </div>
+  </div>
+</div>
