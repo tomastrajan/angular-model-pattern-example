@@ -12,7 +12,7 @@ describe('ModelService', () => {
 
   it('should expose model data in observable',
     inject([ModelFactory], (modelFactory: ModelFactory<TestModel>) => {
-      const model = modelFactory.create(<TestModel> { value: 'test' });
+      const model = modelFactory.create({ value: 'test' });
 
       model.data$.subscribe(data => {
         expect(data).toEqual({ value: 'test' });
@@ -21,7 +21,7 @@ describe('ModelService', () => {
 
   it('should expose raw data getter',
     inject([ModelFactory], (modelFactory: ModelFactory<TestModel>) => {
-      const model = modelFactory.create(<TestModel> { value: 'test' });
+      const model = modelFactory.create({ value: 'test' });
 
       expect(model.getData()).toEqual({ value: 'test' });
     }));
@@ -37,7 +37,7 @@ describe('ModelService', () => {
 
   it('should use immutable data in exposed observable by default',
     inject([ModelFactory], (modelFactory: ModelFactory<TestModel>) => {
-      const model = modelFactory.create(<TestModel> { value: 'test' });
+      const model = modelFactory.create({ value: 'test' });
 
       model.data$.subscribe(data => {
 
@@ -49,7 +49,7 @@ describe('ModelService', () => {
 
   it('should use mutable data in exposed observable when configured',
     inject([ModelFactory], (modelFactory: ModelFactory<TestModel>) => {
-      const model = modelFactory.create(<TestModel> { value: 'test' }, false);
+      const model = modelFactory.create({ value: 'test' }, false);
 
       model.data$.subscribe(data => {
 
@@ -59,10 +59,21 @@ describe('ModelService', () => {
       });
     }));
 
+  it('should use custom clone function when configured',
+    inject([ModelFactory], (modelFactory: ModelFactory<TestModel>) => {
+      const cloneSpy = jasmine.createSpy('clone');
+      const model = modelFactory.create({ value: 'test' }, true, cloneSpy);
+
+      model.data$.subscribe(() => {
+        expect(cloneSpy).toHaveBeenCalled();
+        expect(cloneSpy).toHaveBeenCalledWith({ value: 'test' });
+      });
+    }));
+
   it('should create multiple independent instances',
     inject([ModelFactory], (modelFactory: ModelFactory<TestModel>) => {
-      const model1 = modelFactory.create(<TestModel> { value: 'test1' });
-      const model2 = modelFactory.create(<TestModel> { value: 'test2' });
+      const model1 = modelFactory.create({ value: 'test1' });
+      const model2 = modelFactory.create({ value: 'test2' });
 
       model2.setData({ value: 'changed' });
 
