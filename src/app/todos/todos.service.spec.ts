@@ -15,7 +15,7 @@ describe('TodosService', () => {
       service.resolve(undefined, undefined);
 
       service.todos$.subscribe(todos => {
-        expect(todos.length).toBe(4);
+        expect(todos.length).toBe(5);
         expect(todos[0].name).toBe('Try Todos example');
       });
     }));

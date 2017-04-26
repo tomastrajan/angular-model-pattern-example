@@ -34,7 +34,8 @@ export class TodosService implements Resolve<boolean> {
       { name: 'Try Todos example', done: false },
       { name: 'Try Rest example', done: false },
       { name: 'Read blog post', done: false },
-      { name: 'Have fun!', done: false }
+      { name: 'Integrate model pattern in your project', done: false },
+      { name: 'Enjoy simplified state management!', done: false }
     ]);
     return Observable.of(true);
   }

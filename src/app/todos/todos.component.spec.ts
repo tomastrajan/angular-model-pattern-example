@@ -65,4 +65,18 @@ describe('TodosComponent', () => {
       .disabled).toBe(false);
   });
 
+  it('should display all done message when no todos are available', () => {
+    expect(fixture.debugElement.query(By.css('.all-done')).nativeElement)
+      .toBeDefined();
+  });
+
+  it('should hide all done message when some todos are available', () => {
+    component.newTodo = 'My test todo';
+    component.onAddTodo();
+
+    fixture.detectChanges();
+
+    expect(fixture.debugElement.query(By.css('.all-done'))).toBeNull();
+  });
+
 });

@@ -2,17 +2,17 @@
 
 .page-content {
   min-height: 100%;
-  margin-bottom: -250px;
+  margin-bottom: -242px;
 
   @media #{$medium-and-down} {
-    margin-bottom: -320px;
+    margin-bottom: -323px;
   }
 }
 .page-footer, .page-content-push {
-  height: 250px;
+  height: 242px;
 
   @media #{$medium-and-down} {
-    height: 320px;
+    height: 323px;
   }
 }
 
