@@ -16,7 +16,7 @@
     "clean": "rm -rf ./dist/",
     "server": "cd dist && http-server",
     "prod": "npm run clean && npm run build:prod && npm run server",
-    "travisci": "npm run clean && ng lint && ng test --browsers PhantomJS --single-run --reporters spec && npm run build:travisci"
+    "ci": "npm run clean && ng lint && ng test --browsers PhantomJS --single-run --reporters spec && npm run build:travisci"
   },
   "private": true,
   "dependencies": {

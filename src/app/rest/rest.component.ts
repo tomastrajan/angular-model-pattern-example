@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { RestService } from './rest.service';
 
 @Component({
   selector: 'ampe-rest',
@@ -7,9 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RestComponent implements OnInit {
 
-  constructor() { }
+  constructor(public restService: RestService) { }
 
   ngOnInit() {
+  }
+
+  onCcyChange(ccy: string) {
+    this.restService.getRates(ccy);
   }
 
 }

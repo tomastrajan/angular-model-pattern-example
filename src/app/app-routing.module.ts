@@ -6,6 +6,7 @@ import { ExamplesComponent } from './examples/examples.component';
 import { TodosComponent } from './todos/todos.component';
 import { TodosService } from './todos/todos.service';
 import { RestComponent } from './rest/rest.component';
+import { RestService } from './rest/rest.service';
 import {
   GettingStartedComponent
 } from './getting-started/getting-started.component';
@@ -40,7 +41,10 @@ const routes: Routes = [
         }
       }, {
         path: 'rest',
-        component: RestComponent
+        component: RestComponent,
+        resolve: {
+          rates: RestService
+        }
       }
     ]
   }

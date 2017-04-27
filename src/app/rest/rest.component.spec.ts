@@ -1,6 +1,10 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { HttpModule } from '@angular/http';
+
+import { MODEL_PROVIDER } from '../core';
 
 import { RestComponent } from './rest.component';
+import { RestService } from './rest.service';
 
 describe('RestComponent', () => {
   let component: RestComponent;
@@ -8,7 +12,9 @@ describe('RestComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ RestComponent ]
+      imports: [HttpModule],
+      declarations: [RestComponent],
+      providers: [MODEL_PROVIDER, RestService]
     })
     .compileComponents();
   }));

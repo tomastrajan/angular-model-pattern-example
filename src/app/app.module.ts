@@ -14,6 +14,7 @@ import { TodosService } from './todos/todos.service';
 import { GettingStartedComponent } from './getting-started/getting-started.component';
 import { ExamplesComponent } from './examples/examples.component';
 import { AdvancedComponent } from './advanced/advanced.component';
+import { RestService } from './rest/rest.service';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,7 @@ import { AdvancedComponent } from './advanced/advanced.component';
     AppRoutingModule,
     CoreModule
   ],
-  providers: [TodosService],
+  providers: [TodosService, RestService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
