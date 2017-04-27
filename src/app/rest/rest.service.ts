@@ -12,7 +12,7 @@ import 'rxjs/add/operator/mapTo';
 
 import { ModelFactory, Model } from '../core/model/model.service';
 
-const API_URL = 'http://api.fixer.io/latest?base=';
+const API_URL = 'https://api.fixer.io/latest?base=';
 
 @Injectable()
 export class RestService implements Resolve<boolean> {
