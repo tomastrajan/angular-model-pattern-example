@@ -12,6 +12,8 @@ import { RestComponent } from './rest/rest.component';
 import { AboutComponent } from './about/about.component';
 import { TodosService } from './todos/todos.service';
 import { GettingStartedComponent } from './getting-started/getting-started.component';
+import { ExamplesComponent } from './examples/examples.component';
+import { AdvancedComponent } from './advanced/advanced.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +21,9 @@ import { GettingStartedComponent } from './getting-started/getting-started.compo
     TodosComponent,
     RestComponent,
     AboutComponent,
-    GettingStartedComponent
+    GettingStartedComponent,
+    ExamplesComponent,
+    AdvancedComponent
   ],
   imports: [
     BrowserAnimationsModule,

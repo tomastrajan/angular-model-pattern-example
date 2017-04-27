@@ -21,6 +21,7 @@ export class TodosService implements Resolve<boolean> {
     this.model = this.modelFactory.create([]);
     this.todos$ = this.model.data$;
     this.todosCounts$ = this.todos$.map(todos => ({
+      all: todos.length,
       active: todos.filter(t => !t.done).length,
       done: todos.filter(t => t.done).length
     }));
@@ -30,7 +31,7 @@ export class TodosService implements Resolve<boolean> {
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
   ): Observable<boolean> {
-    this.model.setData([
+    this.model.set([
       { name: 'Try Todos example', done: false },
       { name: 'Try Rest example', done: false },
       { name: 'Read blog post', done: false },
@@ -41,23 +42,23 @@ export class TodosService implements Resolve<boolean> {
   }
 
   addTodo(name: string) {
-    const todos = this.model.getData();
-    this.model.setData(todos.concat([{ name, done: false }]));
+    const todos = this.model.get();
+    this.model.set(todos.concat([{ name, done: false }]));
   }
 
   toggleTodo(name: string) {
-    const todos = this.model.getData();
+    const todos = this.model.get();
     todos.forEach(t => {
       if (t.name === name) {
         t.done = !t.done;
       }
     });
-    this.model.setData(todos);
+    this.model.set(todos);
   }
 
   clearDoneTodos() {
-    const todos = this.model.getData();
-    this.model.setData(todos.filter(t => !t.done));
+    const todos = this.model.get();
+    this.model.set(todos.filter(t => !t.done));
   }
 
 }
@@ -68,6 +69,7 @@ export interface Todo {
 }
 
 export interface TodosCounts {
+  all: number;
   active: number;
   done: number;
 }

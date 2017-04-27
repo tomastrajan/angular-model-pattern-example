@@ -1,10 +1,11 @@
 <div class="row intro">
   <div class="background"></div>
   <div class="col s12 center-align">
+    <div class="logo"></div>
     <h1>Angular Model Pattern</h1>
     <br />
     <p class="description">
-      Imagine simple and predictable state management with <strong>explicit function calls</strong>,
+      Simple state management with <strong>minimalistic API</strong>, <strong>explicit function calls</strong>,
       one <strong>model (store) per feature</strong> and <strong>immutable data</strong> exposed as RxJS Observables
     </p>
     <a class="waves-effect waves-light btn start" [routerLink]="['..', 'getting-started']">
@@ -21,13 +22,22 @@
   </div>
   <div class="row">
     <div class="col m6 s12 feature">
-      <h5><i class="material-icons">refresh</i> One way data flow</h5>
+      <h5><i class="material-icons">photo_size_select_small</i> Minimalistic API</h5>
+      <p>All you need is two methods and one property! Subscribe to state exposed as RxJS Observable
+        <code>.data$</code> property, <code>.get()</code> current state in your service
+        methods, update it and <code>.set(newState)</code> it to notify all subscribed components.</p>
+    </div>
+    <div class="col m6 s12 feature">
+      <h5><i class="material-icons">autorenew</i> One way data flow</h5>
       <p>One way data flow proved to be the most effective and understandable way
         of managing application state. Components simply subscribe to model state
-        exposed as RxJS Observable with <strong>| async</strong> pipe in their template
-        or explicitly by calling <strong>.subscribe()</strong> in <strong>ngOnInit()</strong>.
+        exposed as RxJS Observable with <code>| async</code> pipe in their template
+        or explicitly by calling <code>.subscribe()</code> in <code>ngOnInit()</code>.
       </p>
     </div>
+
+  </div>
+  <div class="row">
     <div class="col m6 s12 feature">
       <h5><i class="material-icons">content_copy</i> Immutable model</h5>
       <p>Stop worrying about unintended side-effects! Your data is accessible through
@@ -36,26 +46,24 @@
         overridden by passing optional flag or custom clone function.
       </p>
     </div>
-  </div>
-  <div class="row">
     <div class="col m6 s12 feature">
       <h5><i class="material-icons">folder</i> One model per feature</h5>
       <p>Create multiple models to separate your state into manageable chunks.
-        Combine state from multiple models using RxJS <strong>.combineLatest()</strong>
+        Combine state from multiple models using RxJS <code>.combineLatest()</code>
         or one of the many available operators.
       </p>
     </div>
+  </div>
+  <div class="row">
     <div class="col m6 s12 feature">
-      <h5><i class="material-icons">call_made</i> Explicit function calls</h5>
+      <h5><i class="material-icons">bug_report</i> Easy debugging</h5>
       <p>Model is updated by explicit calls to vanilla service methods which
         are easy to understand and debug. Step through the call stack from
         component event handler to model data setter - one function call at the time!
       </p>
     </div>
-  </div>
-  <div class="row">
     <div class="col m6 s12 feature">
-      <h5><i class="material-icons">add_box</i> Angular way</h5>
+      <h5><i class="material-icons">favorite</i> Angular way</h5>
       <p>Create <strong>multiple instances</strong> of your model by using standard Angular
         dependency injection mechanism and build in factory support.
       </p>

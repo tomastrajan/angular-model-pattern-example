@@ -1,0 +1,101 @@
+<div class="container">
+
+  <div class="row">
+    <div class="col s12">
+      <h3>Advanced Patterns</h3>
+      <p>Learn how to adjust and use model pattern to its full potential...</p>
+      <br />
+      <h5>Table of Content</h5>
+      <ul class="browser-default">
+        <li><a routerLink="." (click)="scrollTo('mutable-state')">Enable mutable state</a></li>
+        <li><a routerLink="." (click)="scrollTo('custom-clone')">Use custom clone function</a></li>
+        <li><a routerLink="." (click)="scrollTo('resolve-data')">Resolve data during route transition</a></li>
+        <li><a routerLink="." (click)="scrollTo('combine-data')">Combine data from multiple models</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col s12">
+      <h4 id="mutable-state">Enable mutable state</h4>
+      <p>Model <strong>clones state after every call to <code>.set(newData)</code></strong> using
+        <code>JSON.parse(JSON.stringify(data))</code> by default.
+        This works great in most circumstances but sometimes, when the data structure grows
+        too big and updates happen too often, <code>JSON</code> API may be too slow for the task...
+      </p>
+      <p>
+        Check this <a href="https://jsperf.com/deep-copy-vs-json-stringify-json-parse/5">jsPerf example</a>
+        to get an idea.
+      </p>
+      <p>
+        Mutable state is enabled simply by passing (immutable = ) <code>false</code> flag into
+        model factory method like this: <code>this.model.create(initialData, false)</code>.
+      </p>
+      <br />
+      <h5>Best practices</h5>
+      <p>You should still implement one way data flow without direct data mutation even though it
+      won't be prevented. This way you gain performance without loosing simplicity of your state
+      management.</p>
+      <pre>
+        <code class="typescript">
+{{mutableState}}
+        </code>
+      </pre>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col s12">
+      <h4 id="custom-clone">Use custom clone function</h4>
+      <p>While <code>JSON.parse(JSON.stringify(data))</code> method of cloning is pretty great and handles
+      most of the standard use cases, sometimes your model may contain objects like
+        <code>/^regularExpression$/</code>, functions or recursive references which
+        will break default cloning functionality.</p>
+      <p>In these cases you can provide your own custom clone function to handle your specific use case.</p>
+      <pre>
+        <code class="typescript">
+{{customClone}}
+        </code>
+      </pre>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col s12">
+      <h4 id="resolve-data">Resolve data during route transition</h4>
+      <p>This is a bit different approach to resolving data compared to standard
+        Angular Router <code>resolve</code> property.
+      </p>
+      <p>Resolved data is usually returned to router and made accessible on the route object which
+      is injected into component which consumes the resolved data.</p>
+      <p>Using this approach only a <code>boolean</code> flag is returned to the router
+      and resolved data is used to initialize service's model instead. Component then consumes
+      service exposed model as usual using <code>this.todoService.todos$ | async</code> pipe in template
+      or explicit subscription <code>this.todoService.todos$.subscribe(/* ... */)</code>.</p>
+
+      <pre>
+        <code class="typescript">
+{{resolveData}}
+        </code>
+      </pre>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col s12">
+      <h4 id="combine-data">Combine data from multiple models</h4>
+      <p>It is expected that you will create more than one model in any non-trivial application.
+      These models will most likely correspond to the business (domain) features of
+        you application and infrastructure concerns (eg: session management).</p>
+      <p>Implementation of features which require access to the data of more than one model
+        can simply be handled by employing built in RxJS operators like <code>.combineLatest()</code>.
+      </p>
+      <pre>
+        <code class="typescript">
+{{combineData}}
+        </code>
+      </pre>
+    </div>
+  </div>
+
+</div>

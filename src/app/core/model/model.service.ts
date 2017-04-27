@@ -16,11 +16,11 @@ export class Model<T> {
         : data);
   }
 
-  getData(): T {
+  get(): T {
     return this._data.getValue();
   }
 
-  setData(data: T) {
+  set(data: T) {
     this._data.next(data);
   }
 

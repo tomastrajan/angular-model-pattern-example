@@ -8,6 +8,7 @@
     margin-bottom: -323px;
   }
 }
+
 .page-footer, .page-content-push {
   height: 242px;
 
@@ -17,18 +18,17 @@
 }
 
 .nav-wrapper {
+  transition: all 0.3s;
 
   .brand-logo {
+    background-image: url("../assets/logo.png");
+    background-position: left center;
+    background-size: auto 80%;
+    background-repeat: no-repeat;
+    margin: 0 0 0 20px;
 
     span {
       padding: 0 0 0 70px;
-    }
-
-    img {
-      position: absolute;
-      top: 10%;
-      left: 10px;
-      height: 80%;
     }
 
   }
@@ -36,9 +36,16 @@
   ul {
     li {
       a {
-       &.active {
-         background-color: $primary-color-dark;
-       }
+        &.active {
+          background-color: $link-color;
+          &:hover {
+            background-color: $link-color;
+          }
+        }
+
+        &:hover {
+          background-color: $primary-color-light;
+        }
       }
 
       &.icon {
@@ -51,10 +58,20 @@
   }
 }
 
-
-.footer-copyright {
-  background-color: $primary-color-dark;
+.page-footer {
   a {
-    margin: 0 0 0 15px;
+    color: #fff;
+
+    &.active {
+      color: $link-color;
+    }
+  }
+
+  .footer-copyright {
+    background-color: $primary-color-dark;
+
+    a {
+      margin: 0 0 0 15px;
+    }
   }
 }

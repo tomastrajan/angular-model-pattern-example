@@ -8,6 +8,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class GettingStartedComponent implements OnInit {
 
+  repoUrl =
+    'https://github.com/tomastrajan/angular-model-pattern-example/blob/master';
   fileModelService: string =
     require('!raw-loader!../core/model/model.service.ts');
   fileModelServiceTests: string =
@@ -22,6 +24,48 @@ export class GettingStartedComponent implements OnInit {
     })
     export class CoreModule { }
   `;
+  fileBusinessComponent = `
+    import { Component, OnInit, OnDestroy } from '@angular/core';
+    import { TodosService, Todo, TodosCounts } from './todos.service';
+    import { Subscription } from 'rxjs/Subscription';
+    
+    @Component({
+      selector: 'ampe-todos',
+      templateUrl: \`
+        /* ... */
+        <p>Todo list ({{counts.active}})</p>
+        <ul>
+          <!-- template subscription to todos using async pipe -->
+          <li *ngFor="let todo of todosService.todos$ | async" (click)="onTodoClick(todo)">
+            {{todo.name}}
+          </li>
+        </ul>
+      \`,
+    })
+    export class TodosComponent implements OnInit, OnDestroy {
+    
+      newTodo: string;
+      counts: TodosCounts;
+      
+      subscription: Subscription;
+    
+      constructor(public todosService: TodosService) {}
+    
+      ngOnInit() {
+        // explicit subscription to todos counts
+        this.subscription = this.todosService.todosCounts$
+          .subscribe(counts => (this.counts = counts));
+      }
+    
+      onTodoClick(todo: Todo) {
+        this.todosService.toggleTodo(todo.name);
+      }
+      
+      /* ... */
+    
+    }
+
+  `;
   fileBusinessService = `
     import { Injectable } from '@angular/core';
     import { Observable } from 'rxjs/Observable';
@@ -32,7 +76,8 @@ export class GettingStartedComponent implements OnInit {
     
       private model: Model<Todo[]>;
     
-      // public (exposed) Observable to be used in component's template or explicitly subscribed 
+      // public (exposed) Observable to be used in component's template 
+      // or explicitly subscribed in ngOnInit() method
       todos$: Observable<Todo[]>;
     
       // inject model factory with specified type
@@ -43,7 +88,7 @@ export class GettingStartedComponent implements OnInit {
       
       toggleTodo(name: string) {
         // retrieve raw model data
-        const todos = this.model.getData();
+        const todos = this.model.get();
         
         // mutate model data
         todos.forEach(t => {
@@ -53,7 +98,7 @@ export class GettingStartedComponent implements OnInit {
         });
         
         // set new model data (after mutation)
-        this.model.setData(todos);
+        this.model.set(todos);
       }
       
       /* ... */

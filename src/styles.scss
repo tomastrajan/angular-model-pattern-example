@@ -7,3 +7,16 @@ $roboto-font-path: "../node_modules/materialize-css/fonts/roboto/";
 html, body {
   height: 100%;
 }
+
+p {
+  line-height: 23px;
+
+  code {
+    color: $code-color;
+    border: 1px solid lighten($code-color, 30%);
+    border-radius: 3px;
+    white-space: nowrap;
+    padding: 0px 5px 1px 5px;
+    margin: 0 5px;
+  }
+}

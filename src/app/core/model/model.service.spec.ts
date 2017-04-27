@@ -23,16 +23,16 @@ describe('ModelService', () => {
     inject([ModelFactory], (modelFactory: ModelFactory<TestModel>) => {
       const model = modelFactory.create({ value: 'test' });
 
-      expect(model.getData()).toEqual({ value: 'test' });
+      expect(model.get()).toEqual({ value: 'test' });
     }));
 
   it('should expose raw data setter',
     inject([ModelFactory], (modelFactory: ModelFactory<TestModel>) => {
       const model = modelFactory.create(<TestModel> { value: 'test' });
 
-      model.setData({ value: 'changed' });
+      model.set({ value: 'changed' });
 
-      expect(model.getData()).toEqual({ value: 'changed' });
+      expect(model.get()).toEqual({ value: 'changed' });
     }));
 
   it('should use immutable data in exposed observable by default',
@@ -43,7 +43,7 @@ describe('ModelService', () => {
 
         data.value = 'changed';
 
-        expect(model.getData()).toEqual({ value: 'test' });
+        expect(model.get()).toEqual({ value: 'test' });
       });
     }));
 
@@ -55,7 +55,7 @@ describe('ModelService', () => {
 
         data.value = 'changed';
 
-        expect(model.getData()).toEqual({ value: 'changed' });
+        expect(model.get()).toEqual({ value: 'changed' });
       });
     }));
 
@@ -75,7 +75,7 @@ describe('ModelService', () => {
       const model1 = modelFactory.create({ value: 'test1' });
       const model2 = modelFactory.create({ value: 'test2' });
 
-      model2.setData({ value: 'changed' });
+      model2.set({ value: 'changed' });
 
       model1.data$.subscribe(data => expect(data).toEqual({ value: 'test1' }));
       model2.data$.subscribe(data => expect(data)

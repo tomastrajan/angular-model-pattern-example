@@ -1,9 +1,11 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AboutComponent } from './about/about.component';
+import { AdvancedComponent } from './advanced/advanced.component';
+import { ExamplesComponent } from './examples/examples.component';
 import { TodosComponent } from './todos/todos.component';
-import { RestComponent } from './rest/rest.component';
 import { TodosService } from './todos/todos.service';
+import { RestComponent } from './rest/rest.component';
 import {
   GettingStartedComponent
 } from './getting-started/getting-started.component';
@@ -20,19 +22,32 @@ const routes: Routes = [
     path: 'getting-started',
     component: GettingStartedComponent
   }, {
-    path: 'todos',
-    component: TodosComponent,
-    resolve: {
-      todos: TodosService
-    }
+    path: 'advanced',
+    component: AdvancedComponent
   }, {
-    path: 'rest',
-    component: RestComponent
+    path: 'examples',
+    component: ExamplesComponent,
+    children: [
+      {
+        path: '',
+        redirectTo: 'todos',
+        pathMatch: 'full'
+      }, {
+        path: 'todos',
+        component: TodosComponent,
+        resolve: {
+          todos: TodosService
+        }
+      }, {
+        path: 'rest',
+        component: RestComponent
+      }
+    ]
   }
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, { useHash: true })],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
