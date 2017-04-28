@@ -68,9 +68,10 @@
       </p>
       <p>Resolved data is usually returned to router and made accessible on the route object which
       is injected into component which consumes the resolved data.</p>
-      <p>Using this approach only a <code>boolean</code> flag is returned to the router
-      and resolved data is used to initialize service's model instead. Component then consumes
-      service exposed model as usual using <code>this.todoService.todos$ | async</code> pipe in template
+      <p>Conversely, only <code>boolean</code> flag is returned to the router when using model pattern and
+
+resolved data is used to initialize service's model instead. Component then consumes
+      service's model as usual using <code>this.todoService.todos$ | async</code> pipe in template
       or explicit subscription <code>this.todoService.todos$.subscribe(/* ... */)</code>.</p>
 
       <pre>
