@@ -1,0 +1,94 @@
+<div class="container">
+  <div class="row">
+    <div class="col s12">
+      <h3>Frequently asked questions</h3>
+      <ul class="collapsible" data-collapsible="accordion">
+        <li>
+          <div class="collapsible-header"><i class="material-icons">question_answer</i>Why pattern instead of NPM module</div>
+          <div class="collapsible-body">
+            <p> The whole concept is implemented using single short <a href="https://github.com/tomastrajan/angular-model-pattern-example/blob/master/src/app/core/model/model.service.ts">file</a>
+              following standard Angular service blueprint so having a separate NPM module just for that seems like a overkill.
+              <br />
+              <br />
+              Including file instead of dependency has additional benefit of enabling easy customization based
+              on your specific needs (eg: add logging, more complex middlewares, ...)
+            </p>
+          </div>
+        </li>
+        <li>
+          <div class="collapsible-header"><i class="material-icons">question_answer</i>How does Model Pattern compare to Redux, ngRX, ...</div>
+          <div class="collapsible-body">
+            <p>
+              Most of us are aware of great state management libraries like <a href="https://github.com/ngrx/store">ngRx</a>,
+              <a href="http://redux.js.org/">Redux</a> (with <a href="https://github.com/angular-redux/store">angular-redux</a>)
+              which provide nice standardized way of managing your state by defining concepts like <strong>actions</strong>,
+              <strong>reducers</strong>, <strong>effects</strong>, <strong>dispatcher</strong>, <strong>store</strong>, selectors ...
+              <br />
+              <br />
+              Purpose of <strong>Angular Model Pattern</strong> was to provide same one way data flow as above mentioned libraries
+              while reducing verbosity and abstraction overhead.
+            </p>
+            <div class="row list">
+              <div class="col m4 s12">
+                <p><code>actions</code></p>
+              </div>
+              <div class="col m8 s12">
+                Explicitly call service method with all necessary parameters to perform model mutation
+                instead of emitting action event on dispatcher.
+                This enables standard debugging experience (stepping through call stack one function call at a time).
+              </div>
+            </div>
+            <div class="row list">
+              <div class="col m4 s12">
+                <p><code>reducers</code> & <code>effects</code></p>
+              </div>
+              <div class="col m8 s12">
+                Service method implements all logic needed to mutate model state and perform side effects (both sync and async),
+                use orchestrating application services in case dependent model mutations across multiple models
+              </div>
+            </div>
+            <div class="row list">
+              <div class="col m4 s12">
+                <p><code>dispatcher</code></p>
+              </div>
+              <div class="col m8 s12">
+                <p>We are using explicit function call so there is no need for dispatcher to emit action events with payload.</p>
+              </div>
+            </div>
+            <div class="row list">
+              <div class="col m4 s12">
+                <p><code>store</code> & <code>selectors</code></p>
+              </div>
+              <div class="col m8 s12">
+                <p>Model exposes data as RxJS Observable through <code>.data$</code> property.
+                  Service then re-exposes model's data with descriptively named property
+                  (eg: <code>this.todo$ = this.model.data$</code>) which is consumed by the component. <br /><br />
+                  You can simply provide derived data too (eg: <code>this.todosCount$ = this.model.data$.map(todos => todos.length)</code>)
+                </p>
+              </div>
+            </div>
+          </div>
+        </li>
+        <li>
+          <div class="collapsible-header"><i class="material-icons">question_answer</i> Immutable vs Mutable models</div>
+          <div class="collapsible-body">
+            <p>Immutable model is enabled by default and uses <code>JSON.parse(JSON.stringify(data))</code> to clone model's data.
+              <br /><br />
+              If you are dealing with large model objects with frequent updates you can skip cloning step by
+              creating model using <code>.createMutable(inititalData)</code> factory method. Remember
+              to preserve one way data flow and never mutate model directly in your components.
+              <br /><br />
+              In case your model has to contain recursive object references, functions or regexp objects you can provide
+              your own custom cloning function by using <code>.createWithCustomClone(initialData, customCloneFn)</code>
+              factory method.
+            </p>
+          </div>
+        </li>
+        <li>
+          <div class="collapsible-header"><i class="material-icons">question_answer</i> Do you have any other questions?</div>
+          <div class="collapsible-body"><p>Feel free to ping me on twitter <a href="https://twitter.com/@tomastrajan">@tomastrajan</a></p></div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>

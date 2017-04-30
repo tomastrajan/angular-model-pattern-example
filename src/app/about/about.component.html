@@ -5,11 +5,11 @@
     <h1>Angular Model Pattern</h1>
     <br />
     <p class="description">
-      Simple state management with <strong>minimalistic API</strong>, <strong>explicit function calls</strong>,
-      one <strong>model (store) per feature</strong> and <strong>immutable data</strong> exposed as RxJS Observables
+      Simple state management with <strong>minimalistic API</strong>, <strong>one way data flow</strong>,
+      <strong>multiple models (model per feature)</strong> and <strong>immutable data</strong> exposed as RxJS Observable
     </p>
     <a class="waves-effect waves-light btn start" [routerLink]="['..', 'getting-started']">
-      <i class="fa fa-star fa-lg"></i> Getting started
+      <i class="fa fa-star fa-lg"></i> Get started
     </a>
     <a class="waves-effect waves-light btn" href="https://github.com/tomastrajan/angular-model-pattern-example">
       <i class="fa fa-github fa-lg"></i> Check on Github
@@ -23,7 +23,7 @@
   <div class="row">
     <div class="col m6 s12 feature">
       <h5><i class="material-icons">photo_size_select_small</i> Minimalistic API</h5>
-      <p>All you need is two methods and one property! Subscribe to state exposed as RxJS Observable
+      <p>All you need are two methods and one property! Subscribe to state exposed as RxJS Observable
         <code>.data$</code> property, <code>.get()</code> current state in your service
         methods, update it and <code>.set(newState)</code> it to notify all subscribed components.</p>
     </div>
@@ -42,8 +42,9 @@
       <h5><i class="material-icons">content_copy</i> Immutable model</h5>
       <p>Stop worrying about unintended side-effects! Your data is accessible through
         an RxJS Observable which clones underlying data <strong>by default</strong>
-        and prevents accidental mutations by model consumers. Immutability can be
-        overridden by passing optional flag or custom clone function.
+        to prevent accidental data mutations by model consumers. <br />
+        Immutability can be overridden by using <code>.createMutable(data)</code> or
+        <code>.createWithCustomClone(data, cloneFn)</code> factory methods.
       </p>
     </div>
     <div class="col m6 s12 feature">
@@ -57,7 +58,7 @@
   <div class="row">
     <div class="col m6 s12 feature">
       <h5><i class="material-icons">bug_report</i> Easy debugging</h5>
-      <p>Model is updated by explicit calls to vanilla service methods which
+      <p>Model is updated by explicit calls to service methods which
         are easy to understand and debug. Step through the call stack from
         component event handler to model data setter - one function call at the time!
       </p>

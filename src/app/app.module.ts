@@ -16,6 +16,7 @@ import { ExamplesComponent } from './examples/examples.component';
 import { AdvancedComponent } from './advanced/advanced.component';
 import { RestService } from './rest/rest.service';
 import { CodeBlockComponent } from './code-block/code-block.component';
+import { FaqComponent } from './faq/faq.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { CodeBlockComponent } from './code-block/code-block.component';
     GettingStartedComponent,
     ExamplesComponent,
     AdvancedComponent,
-    CodeBlockComponent
+    CodeBlockComponent,
+    FaqComponent
   ],
   imports: [
     BrowserAnimationsModule,

@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AboutComponent } from './about/about.component';
 import { AdvancedComponent } from './advanced/advanced.component';
+import { FaqComponent } from './faq/faq.component';
 import { ExamplesComponent } from './examples/examples.component';
 import { TodosComponent } from './todos/todos.component';
 import { TodosService } from './todos/todos.service';
@@ -25,6 +26,9 @@ const routes: Routes = [
   }, {
     path: 'advanced',
     component: AdvancedComponent
+  }, {
+    path: 'faq',
+    component: FaqComponent
   }, {
     path: 'examples',
     component: ExamplesComponent,

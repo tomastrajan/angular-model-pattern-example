@@ -21,8 +21,7 @@ export class AdvancedComponent implements OnInit {
     
       constructor(private modelFactory: ModelFactory<FrequentlyUpdated>) {
       
-        // pass 'immutable = false' flag into object factory
-        this.model = this.modelFactory.create({}, false);
+        this.model = this.modelFactory.createMutable({});
       }
       
       /* ... */
@@ -48,8 +47,7 @@ export class AdvancedComponent implements OnInit {
     
       constructor(private modelFactory: ModelFactory<MyModel>) {
       
-        // pass 'immutable = true' flag and custom clone function
-        this.model = this.modelFactory.create({}, true, myCustomClone);
+        this.model = this.modelFactory.createWithCustomClone({}, myCustomClone);
       }
       
       /* ... */

@@ -27,12 +27,17 @@ export class Model<T> {
 }
 
 export class ModelFactory<T> {
-  create(
-    initialData: T,
-    immutable: boolean = true,
-    clone?: (data: T) => T): Model<T> {
-    return new Model<T>(initialData, immutable, clone);
+
+  create(initialData: T): Model<T> { return new Model<T>(initialData, true); }
+
+  createMutable(initialData: T): Model<T> {
+    return new Model<T>(initialData, false);
   }
+
+  createWithCustomClone(initialData: T, clone) {
+    return new Model<T>(initialData, true, clone);
+  }
+
 }
 
 export function useModelFactory() {

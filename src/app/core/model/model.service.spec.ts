@@ -49,7 +49,7 @@ describe('ModelService', () => {
 
   it('should use mutable data in exposed observable when configured',
     inject([ModelFactory], (modelFactory: ModelFactory<TestModel>) => {
-      const model = modelFactory.create({ value: 'test' }, false);
+      const model = modelFactory.createMutable({ value: 'test' });
 
       model.data$.subscribe(data => {
 
@@ -62,7 +62,8 @@ describe('ModelService', () => {
   it('should use custom clone function when configured',
     inject([ModelFactory], (modelFactory: ModelFactory<TestModel>) => {
       const cloneSpy = jasmine.createSpy('clone');
-      const model = modelFactory.create({ value: 'test' }, true, cloneSpy);
+      const model = modelFactory
+        .createWithCustomClone({ value: 'test' }, cloneSpy);
 
       model.data$.subscribe(() => {
         expect(cloneSpy).toHaveBeenCalled();
