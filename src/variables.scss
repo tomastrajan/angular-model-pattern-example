@@ -7,9 +7,13 @@ $secondary-color: #eba74c;
 $secondary-color-light: lighten($secondary-color, 5%);
 $secondary-color-dark: darken($secondary-color, 5%);
 
+$link-color: #2ab786;
+$link-color-light: lighten($link-color, 5%);
+$link-color-dark: darken($link-color, 5%);
+
 $success-color: #8bc34a;
 $error-color: #e53935;
-$link-color: #2ab786;
+
 
 $code-color: #888;
 $white-color: #fff;

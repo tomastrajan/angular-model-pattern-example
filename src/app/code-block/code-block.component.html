@@ -1,0 +1,8 @@
+<pre>
+  <code #codeBlock class="typescript">{{code}}</code>
+  <textarea #clipboardHelper class="clipboard-helper" [value]="code"></textarea>
+  <span class="copy" (click)="onCopyToClipboardClick()">
+    <span [ngClass]="{ 'clipboard-feedback': showFeedback }">Copied to clipboard</span> <i class="material-icons" title="Copy to clipboard">content_copy</i>
+  </span>
+</pre>
+

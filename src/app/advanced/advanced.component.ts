@@ -111,10 +111,7 @@ export class AdvancedComponent implements OnInit {
 
   constructor() { }
 
-  ngOnInit() {
-    setTimeout(() =>
-      $('pre code').each((i, block) => hljs.highlightBlock(block)));
-  }
+  ngOnInit() {}
 
   scrollTo(anchor: string) {
     (<HTMLScriptElement> document.querySelector(`#${anchor}`)).scrollIntoView();

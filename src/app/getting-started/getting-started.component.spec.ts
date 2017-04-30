@@ -1,6 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { GettingStartedComponent } from './getting-started.component';
+import { CodeBlockComponent } from '../code-block/code-block.component';
 
 describe('GettingStartedComponent', () => {
   let component: GettingStartedComponent;
@@ -8,7 +9,7 @@ describe('GettingStartedComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ GettingStartedComponent ]
+      declarations: [ GettingStartedComponent, CodeBlockComponent ]
     })
     .compileComponents();
   }));

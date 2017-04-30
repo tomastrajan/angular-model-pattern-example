@@ -1,6 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { AdvancedComponent } from './advanced.component';
+import { CodeBlockComponent } from '../code-block/code-block.component';
 
 describe('AdvancedComponent', () => {
   let component: AdvancedComponent;
@@ -8,7 +9,7 @@ describe('AdvancedComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ AdvancedComponent ]
+      declarations: [ AdvancedComponent, CodeBlockComponent ]
     })
     .compileComponents();
   }));

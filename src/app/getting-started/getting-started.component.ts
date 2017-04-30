@@ -112,9 +112,6 @@ export class GettingStartedComponent implements OnInit {
 
   constructor() {}
 
-  ngOnInit(): void {
-    setTimeout(() =>
-      $('pre code').each((i, block) => hljs.highlightBlock(block)));
-  }
+  ngOnInit(): void {}
 
 }

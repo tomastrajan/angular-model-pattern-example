@@ -19,6 +19,7 @@ module.exports = function (config) {
     },
     files: [
       "./node_modules/jquery/dist/jquery.min.js",
+      "./src/assets/highlight.pack.js",
       { pattern: './src/test.ts', watched: false }
     ],
     preprocessors: {

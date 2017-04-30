@@ -36,11 +36,7 @@
       <p>You should still implement one way data flow without direct data mutation even though it
       won't be prevented. This way you gain performance without loosing simplicity of your state
       management.</p>
-      <pre>
-        <code class="typescript">
-{{mutableState}}
-        </code>
-      </pre>
+      <ampe-code-block [code]="mutableState" ></ampe-code-block>
     </div>
   </div>
 
@@ -52,11 +48,7 @@
         <code>/^regularExpression$/</code>, functions or recursive references which
         will break default cloning functionality.</p>
       <p>In these cases you can provide your own custom clone function to handle your specific use case.</p>
-      <pre>
-        <code class="typescript">
-{{customClone}}
-        </code>
-      </pre>
+      <ampe-code-block [code]="customClone" ></ampe-code-block>
     </div>
   </div>
 
@@ -73,12 +65,7 @@
 resolved data is used to initialize service's model instead. Component then consumes
       service's model as usual using <code>this.todoService.todos$ | async</code> pipe in template
       or explicit subscription <code>this.todoService.todos$.subscribe(/* ... */)</code>.</p>
-
-      <pre>
-        <code class="typescript">
-{{resolveData}}
-        </code>
-      </pre>
+      <ampe-code-block [code]="resolveData" ></ampe-code-block>
     </div>
   </div>
 
@@ -91,11 +78,7 @@ resolved data is used to initialize service's model instead. Component then cons
       <p>Implementation of features which require access to the data of more than one model
         can simply be handled by employing built in RxJS operators like <code>.combineLatest()</code>.
       </p>
-      <pre>
-        <code class="typescript">
-{{combineData}}
-        </code>
-      </pre>
+      <ampe-code-block [code]="combineData" ></ampe-code-block>
     </div>
   </div>
 
