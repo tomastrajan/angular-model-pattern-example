@@ -48,14 +48,21 @@
       </p>
     </div>
     <div class="col m6 s12 feature">
+      <h5><i class="material-icons">share</i> Component state sharing</h5>
+      <p>Share state between multiple components by injecting same service
+        and subscribing to the model. This makes state sharing independent
+        from component's DOM location (parent child eventing).
+      </p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col m6 s12 feature">
       <h5><i class="material-icons">folder</i> One model per feature</h5>
       <p>Create multiple models to separate your state into manageable chunks.
         Combine state from multiple models using RxJS <code>.combineLatest()</code>
         or one of the many available operators.
       </p>
     </div>
-  </div>
-  <div class="row">
     <div class="col m6 s12 feature">
       <h5><i class="material-icons">bug_report</i> Easy debugging</h5>
       <p>Model is updated by explicit calls to service methods which
@@ -63,11 +70,17 @@
         component event handler to model data setter - one function call at the time!
       </p>
     </div>
+  </div>
+  <div class="row">
     <div class="col m6 s12 feature">
       <h5><i class="material-icons">favorite</i> Angular way (AoT compatible)</h5>
       <p>Create <strong>multiple instances</strong> of your model by using standard Angular
         dependency injection mechanism and build in factory support.
       </p>
     </div>
+  </div>
+  <div class="row">
+    <div class="col s12 text-center"><h3>Overview</h3></div>
+    <div class="col s12 graph"></div>
   </div>
 </div>
