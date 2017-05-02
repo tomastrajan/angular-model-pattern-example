@@ -15,11 +15,11 @@ p {
 
   code {
     color: $primary-color;
-    background-color: lighten($primary-color, 60%);
+    background-color: lighten($primary-color, 65%);
     font-weight: bold;
     border-radius: 10px;
     white-space: nowrap;
-    padding: 0px 5px 1px 5px;
+    padding: 0px 10px 1px 10px;
     margin: 0 5px;
     
     a {
