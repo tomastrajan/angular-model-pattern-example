@@ -6,7 +6,7 @@
     <br />
     <p class="description">
       Simple state management with <strong>minimalistic API</strong>, <strong>one way data flow</strong>,
-      <strong>multiple models (model per feature)</strong> and <strong>immutable data</strong> exposed as RxJS Observable
+      <strong>multiple models support</strong> and <strong>immutable data</strong> exposed as RxJS Observable
     </p>
     <a class="waves-effect waves-light btn start" [routerLink]="['..', 'getting-started']">
       <i class="fa fa-star fa-lg"></i> Get started
@@ -25,11 +25,11 @@
       <h5><i class="material-icons">photo_size_select_small</i> Minimalistic API</h5>
       <p>All you need are two methods and one property! Subscribe to state exposed as RxJS Observable
         <code>.data$</code> property, <code>.get()</code> current state in your service
-        methods, update it and <code>.set(newState)</code> it to notify all subscribed components.</p>
+        methods, update it and <code>.set(newState)</code> to notify all subscribed components.</p>
     </div>
     <div class="col m6 s12 feature">
       <h5><i class="material-icons">autorenew</i> One way data flow</h5>
-      <p>One way data flow proved to be the most effective and understandable way
+      <p>One way data flow has proved to be the most effective and understandable way
         of managing application state. Components simply subscribe to model state
         exposed as RxJS Observable with <code>| async</code> pipe in their template
         or explicitly by calling <code>.subscribe()</code> in <code>ngOnInit()</code>.
@@ -41,17 +41,17 @@
     <div class="col m6 s12 feature">
       <h5><i class="material-icons">content_copy</i> Immutable model</h5>
       <p>Stop worrying about unintended side-effects! Your data is accessible through
-        an RxJS Observable which clones underlying data <strong>by default</strong>
-        to prevent accidental data mutations by model consumers. <br />
+        an RxJS Observable which clones underlying data <strong>by default</strong>.
+        This prevents accidental data mutations by model consumers.<br /><br />
         Immutability can be overridden by using <code>.createMutable(data)</code> or
         <code>.createWithCustomClone(data, cloneFn)</code> factory methods.
       </p>
     </div>
     <div class="col m6 s12 feature">
-      <h5><i class="material-icons">share</i> Component state sharing</h5>
-      <p>Share state between multiple components by injecting same service
-        and subscribing to the model. This makes state sharing independent
-        from component's DOM location (parent child eventing).
+      <h5><i class="material-icons">share</i> Sharing state by multiple component</h5>
+      <p>Share state between multiple components by injecting one service
+        and subscribing to the same model. This makes state sharing independent
+        from component's DOM location (no dirrect parent child eventing).
       </p>
     </div>
   </div>
