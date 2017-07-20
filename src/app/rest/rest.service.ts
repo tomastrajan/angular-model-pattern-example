@@ -4,13 +4,13 @@ import {
   Resolve, ActivatedRouteSnapshot,
   RouterStateSnapshot
 } from '@angular/router';
+import { ModelFactory, Model } from 'ngx-model';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/do';
 import 'rxjs/add/operator/filter';
 import 'rxjs/add/operator/mapTo';
 
-import { ModelFactory, Model } from '../core/model/model.service';
 
 const API_URL = 'https://api.fixer.io/latest?base=';
 

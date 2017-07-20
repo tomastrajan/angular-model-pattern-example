@@ -1,4 +1,14 @@
 # Model pattern for Angular by [@tomastrajan](https://twitter.com/tomastrajan) [![Build Status](https://travis-ci.org/tomastrajan/angular-model-pattern-example.svg?branch=master)](https://travis-ci.org/tomastrajan/angular-model-pattern-example)
+
+# Model pattern is now available as library too !
+
+* Check out [ngx-model](https://github.com/tomastrajan/ngx-model) 
+  or just install library using `npm i -S ngx-model`.
+  
+  All existing documentation is still valid, `ngx-model` just provides convenient
+  way of using model pattern without need to copy model code by hand.
+
+## Documentation
                            
 * Check out [Demo & Documentation](http://tomastrajan.github.io/angular-model-pattern-example/) 
 * Check out [Blog Post](https://medium.com/@tomastrajan/model-pattern-for-angular-state-management-6cb4f0bfed87) 

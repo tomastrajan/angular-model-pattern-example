@@ -8,6 +8,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class GettingStartedComponent implements OnInit {
 
+  libraryProvide = `
+    import { NgxModelModule } from 'ngx-model';
+    
+    @NgModule({
+      /* ... */
+      imports: [
+        NgxModelModule
+      ]
+    })
+    export class AppModule {} // or CoreModule
+  `;
   repoUrl =
     'https://github.com/tomastrajan/angular-model-pattern-example/blob/master';
   fileModelService: string =
@@ -109,9 +120,55 @@ export class GettingStartedComponent implements OnInit {
       done: boolean;
     }
   `;
+  libraryBusinessService = `
+    import { Injectable } from '@angular/core';
+    import { Observable } from 'rxjs/Observable';
+    
+    import { ModelFactory, Model } from 'ngx-model';
+    
+    @Injectable()
+    export class TodoService {
+    
+      private model: Model<Todo[]>;
+    
+      // public (exposed) Observable to be used in component's template 
+      // or explicitly subscribed in ngOnInit() method
+      todos$: Observable<Todo[]>;
+    
+      // inject model factory with specified type
+      constructor(private modelFactory: ModelFactory<Todo[]>) {
+        this.model = this.modelFactory.create([]);
+        this.todos$ = this.model.data$;
+      }
+      
+      toggleTodo(name: string) {
+        // retrieve raw model data
+        const todos = this.model.get();
+        
+        // mutate model data
+        todos.forEach(t => {
+          if (t.name === name) {
+            t.done = !t.done;
+          }
+        });
+        
+        // set new model data (after mutation)
+        this.model.set(todos);
+      }
+      
+      /* ... */
+    }
+    
+    export interface Todo {
+      name: string;
+      done: boolean;
+    }
+  `;
 
   constructor() {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    $('ul.tabs').tabs();
+  }
 
 }

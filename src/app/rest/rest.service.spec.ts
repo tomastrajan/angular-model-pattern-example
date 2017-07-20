@@ -1,7 +1,7 @@
 import { TestBed, inject } from '@angular/core/testing';
 import { HttpModule } from '@angular/http';
 
-import { MODEL_PROVIDER } from '../core';
+import { NgxModelModule } from 'ngx-model';
 
 import { RestService } from './rest.service';
 
@@ -9,8 +9,8 @@ import { RestService } from './rest.service';
 describe('RestService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [HttpModule],
-      providers: [MODEL_PROVIDER, RestService]
+      imports: [HttpModule, NgxModelModule],
+      providers: [RestService]
     });
   });
 

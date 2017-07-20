@@ -4,10 +4,10 @@ import {
   ActivatedRouteSnapshot,
   RouterStateSnapshot
 } from '@angular/router';
+import { ModelFactory, Model } from 'ngx-model';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/of';
 import 'rxjs/add/operator/map';
-import { ModelFactory, Model } from '../core';
 
 @Injectable()
 export class TodosService implements Resolve<boolean> {

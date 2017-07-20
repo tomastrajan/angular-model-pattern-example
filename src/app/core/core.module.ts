@@ -1,12 +1,14 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { MODEL_PROVIDER } from './model/model.service';
+
+import { NgxModelModule } from 'ngx-model';
 
 @NgModule({
   imports: [
-    CommonModule
+    CommonModule,
+    NgxModelModule
   ],
   declarations: [],
-  providers: [MODEL_PROVIDER]
+  providers: []
 })
 export class CoreModule { }

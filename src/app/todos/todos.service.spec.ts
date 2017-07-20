@@ -1,12 +1,14 @@
 import { TestBed, inject } from '@angular/core/testing';
 
-import { MODEL_PROVIDER } from '../core';
+import { NgxModelModule } from 'ngx-model';
+
 import { TodosService } from './todos.service';
 
 describe('TodosService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [MODEL_PROVIDER, TodosService]
+      imports: [NgxModelModule],
+      providers: [TodosService]
     });
   });
 

@@ -3,3 +3,10 @@
     margin: 0;
   }
 }
+
+ol {
+  li {
+    list-style-type: decimal;
+    padding: 5px 20px;
+  }
+}

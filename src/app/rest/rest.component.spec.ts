@@ -1,7 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { HttpModule } from '@angular/http';
 
-import { MODEL_PROVIDER } from '../core';
+import { NgxModelModule } from 'ngx-model';
 
 import { RestComponent } from './rest.component';
 import { RestService } from './rest.service';
@@ -12,9 +12,9 @@ describe('RestComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [HttpModule],
+      imports: [HttpModule, NgxModelModule],
       declarations: [RestComponent],
-      providers: [MODEL_PROVIDER, RestService]
+      providers: [RestService]
     })
     .compileComponents();
   }));
