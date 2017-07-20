@@ -47,7 +47,11 @@
     }
   }
 
-  .start {
+  .primary-color {
+    background-color: $primary-color-light;
+  }
+
+  .link-color {
     background-color: $link-color;
   }
 
