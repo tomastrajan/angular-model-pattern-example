@@ -18,8 +18,9 @@
   <div class="row">
     <div class="col s12">
       <h4 id="mutable-state">Enable mutable state</h4>
-      <p>Model <strong>clones state after every call to <code>.set(newData)</code></strong> using
-        <code>JSON.parse(JSON.stringify(data))</code> by default.
+      <p>Model is immutable by default. It <strong>clones state for every
+        subscribed component</strong> using <code>JSON.parse(JSON.stringify(data))</code>.
+        <br>
         This works great in most circumstances but sometimes, when the data structure grows
         too big and updates happen too often, <code>JSON</code> API may be too slow for the task...
       </p>
