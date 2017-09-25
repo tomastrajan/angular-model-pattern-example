@@ -34,7 +34,7 @@ export class ModelFactory<T> {
     return new Model<T>(initialData, false);
   }
 
-  createWithCustomClone(initialData: T, clone) {
+  createWithCustomClone(initialData: T, clone: (data: T) => T) {
     return new Model<T>(initialData, true, clone);
   }
 
