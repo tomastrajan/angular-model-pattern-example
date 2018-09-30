@@ -9,10 +9,9 @@ export class AdvancedComponent implements OnInit {
 
   mutableState = `
     import { Injectable } from '@angular/core';
-    import { Observable } from 'rxjs/Observable';
+    import { Observable } from 'rxjs';
     
-    import { ModelFactory, Model } from 'ngx-model'; 
-    // or from '../core' in case of pattern usage
+    import { ModelFactory, Model } from '@angular-extensions/model';
     
     @Injectable()
     export class SomeService {
@@ -37,10 +36,9 @@ export class AdvancedComponent implements OnInit {
     import myCustomClone from 'my-custom-clone';
     
     import { Injectable } from '@angular/core';
-    import { Observable } from 'rxjs/Observable';
+    import { Observable } from 'rxjs';
     
-    import { ModelFactory, Model } from 'ngx-model'; 
-    // or from '../core' in case of pattern usage
+    import { ModelFactory, Model } from '@angular-extensions/model';
     
     @Injectable()
     export class SomeService {

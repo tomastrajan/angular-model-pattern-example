@@ -7,25 +7,17 @@ import { HttpModule } from '@angular/http';
 import { AppRoutingModule } from './app-routing.module';
 import { CoreModule } from './core/core.module';
 import { AppComponent } from './app.component';
-import { TodosComponent } from './todos/todos.component';
-import { RestComponent } from './rest/rest.component';
 import { AboutComponent } from './about/about.component';
-import { TodosService } from './todos/todos.service';
 import { GettingStartedComponent } from './getting-started/getting-started.component';
-import { ExamplesComponent } from './examples/examples.component';
 import { AdvancedComponent } from './advanced/advanced.component';
-import { RestService } from './rest/rest.service';
 import { CodeBlockComponent } from './code-block/code-block.component';
 import { FaqComponent } from './faq/faq.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    TodosComponent,
-    RestComponent,
     AboutComponent,
     GettingStartedComponent,
-    ExamplesComponent,
     AdvancedComponent,
     CodeBlockComponent,
     FaqComponent
@@ -38,7 +30,7 @@ import { FaqComponent } from './faq/faq.component';
     AppRoutingModule,
     CoreModule
   ],
-  providers: [TodosService, RestService],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

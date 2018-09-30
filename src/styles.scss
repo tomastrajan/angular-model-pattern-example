@@ -12,7 +12,9 @@ html, body {
 
 p {
   line-height: 23px;
+}
 
+p, li {
   code {
     color: $primary-color;
     background-color: lighten($primary-color, 65%);

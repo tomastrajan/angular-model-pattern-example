@@ -3,11 +3,6 @@ import { Routes, RouterModule } from '@angular/router';
 import { AboutComponent } from './about/about.component';
 import { AdvancedComponent } from './advanced/advanced.component';
 import { FaqComponent } from './faq/faq.component';
-import { ExamplesComponent } from './examples/examples.component';
-import { TodosComponent } from './todos/todos.component';
-import { TodosService } from './todos/todos.service';
-import { RestComponent } from './rest/rest.component';
-import { RestService } from './rest/rest.service';
 import {
   GettingStartedComponent
 } from './getting-started/getting-started.component';
@@ -29,28 +24,6 @@ const routes: Routes = [
   }, {
     path: 'faq',
     component: FaqComponent
-  }, {
-    path: 'examples',
-    component: ExamplesComponent,
-    children: [
-      {
-        path: '',
-        redirectTo: 'todos',
-        pathMatch: 'full'
-      }, {
-        path: 'todos',
-        component: TodosComponent,
-        resolve: {
-          todos: TodosService
-        }
-      }, {
-        path: 'rest',
-        component: RestComponent,
-        resolve: {
-          rates: RestService
-        }
-      }
-    ]
   }
 ];
 

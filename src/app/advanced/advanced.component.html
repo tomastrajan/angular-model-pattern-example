@@ -7,10 +7,28 @@
       <br />
       <h5>Table of Content</h5>
       <ul class="browser-default">
+        <li><a routerLink="." (click)="scrollTo('factories')">Available Model Factories</a></li>
         <li><a routerLink="." (click)="scrollTo('mutable-state')">Enable mutable state</a></li>
         <li><a routerLink="." (click)="scrollTo('custom-clone')">Use custom clone function</a></li>
         <li><a routerLink="." (click)="scrollTo('resolve-data')">Resolve data during route transition</a></li>
         <li><a routerLink="." (click)="scrollTo('combine-data')">Combine data from multiple models</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col s12">
+      <h4 id="factories">Available Model Factories</h4>
+      <p>
+        Models are created using model factory as shown in example <code>todo.service.ts</code>,
+        check line <code>this.model = this.modelFactory.create(initialData);</code>.
+        Multiple model factories are provided out of the box to support different use cases:
+      </p>
+      <ul>
+        <li><code>create(initialData: T): Model&lt;T></code> - create basic model which is immutable by default (JSON cloning)</li>
+        <li><code>createMutable(initialData: T): Model&lt;T></code> - create model with no immutability guarantees (you have to make sure that model consumers don't mutate and corrupt model state) but much more performance because whole cloning step is skipped</li>
+        <li><code>createMutableWithSharedSubscription(initialData: T): Model&lt;T></code> - gain even more performance by skipping both immutability and sharing subscription between all consumers (eg situation in which many components are subscribed to single model)</li>
+        <li><code>createWithCustomClone(initialData: T, clone: (data: T) => T)</code> - create immutable model by passing your custom clone function (JSON cloning doesn't support properties containing function or regex so custom cloning functionality might be needed)</li>
       </ul>
     </div>
   </div>

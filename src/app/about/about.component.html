@@ -2,31 +2,31 @@
   <div class="background"></div>
   <div class="col s12 center-align">
     <div class="logo"></div>
-    <h1>Angular Model Pattern</h1>
+    <h1>Angular Model</h1>
     <br />
     <p class="description">
       Simple state management with <strong>minimalistic API</strong>, <strong>one way data flow</strong>,
       <strong>multiple models support</strong> and <strong>immutable data</strong> exposed as RxJS Observable
     </p>
-    <p class="description">Install using npm <code>npm i -S ngx-model</code><br>
-      or yarn <code>yarn add ngx-model</code> (less than 1kB)
+    <p class="description">Install using Angular CLI <code>ng add @angular-extensions/model</code><br>
+      or npm <code>npm i -S @angular-extensions/model</code> (less than 1kB)
     </p>
-    <a class="waves-effect waves-light btn primary-color"
+    <a class="waves-effect waves-light btn"
        [routerLink]="['..', 'getting-started']"
        onclick="ga('send', 'event', 'button', 'click', 'get-started');">
       <i class="fa fa-star fa-lg"></i> Get started
     </a>
-    <a class="waves-effect waves-light btn"
-       href="https://github.com/tomastrajan/ngx-model"
+    <a class="waves-effect waves-light btn link-color"
+       href="https://github.com/angular-extensions/model"
        target="_blank"
        onclick="ga('send', 'event', 'button', 'click', 'check-on-github');">
-      <i class="fa fa-github fa-lg"></i> Check on Github
+      <i class="fa fa-github fa-lg"></i> Explore Source
     </a>
-    <a class="waves-effect waves-light btn link-color"
-       href="https://medium.com/@tomastrajan/model-pattern-for-angular-state-management-6cb4f0bfed87"
+    <a class="waves-effect waves-light btn white-color"
+       href="https://stackblitz.com/edit/angular-extensions-model?file=src%2Fapp%2Ftodo%2Ftodo.service.ts"
        target="_blank"
        onclick="ga('send', 'event', 'button', 'click', 'check-blog');">
-      <i class="fa fa-medium fa-lg"></i> Check Blog Post
+      <i class="fa fa-code fa-lg"></i> Live Demo
     </a>
   </div>
 </div>
@@ -62,26 +62,27 @@
       </p>
     </div>
     <div class="col m6 s12 feature">
-      <h5><i class="material-icons">share</i> Sharing state by multiple component</h5>
-      <p>Share state between multiple components by injecting one service
-        and subscribing to the same model. This makes state sharing independent
-        from component's DOM location (no direct parent child eventing).
+      <h5><i class="material-icons">build</i> Schematics</h5>
+      <p>Model comes with build in schematics support which enables you to generate
+        your service using Angular CLI. Get going by running
+        <code>ng g @angular-extensions/model:model path/my-service</code> or
+        explore additional options in the documentation.
       </p>
     </div>
   </div>
   <div class="row">
     <div class="col m6 s12 feature">
+      <h5><i class="material-icons">share</i> Sharing state between component</h5>
+      <p>Share state between multiple components by injecting one service
+        and subscribing to the same model. This makes state sharing independent
+        from component's DOM location (no direct parent child eventing).
+      </p>
+    </div>
+    <div class="col m6 s12 feature">
       <h5><i class="material-icons">folder</i> One model per feature</h5>
       <p>Create multiple models to separate your state into manageable chunks.
         Combine state from multiple models using RxJS <code>.combineLatest()</code>
         or one of the many available operators.
-      </p>
-    </div>
-    <div class="col m6 s12 feature">
-      <h5><i class="material-icons">bug_report</i> Easy debugging</h5>
-      <p>Model is updated by explicit calls to service methods which
-        are easy to understand and debug. Step through the call stack from
-        component event handler to model data setter - one function call at the time!
       </p>
     </div>
   </div>
@@ -90,6 +91,13 @@
       <h5><i class="material-icons">favorite</i> Angular way (AoT compatible)</h5>
       <p>Create <strong>multiple instances</strong> of your model by using standard Angular
         dependency injection mechanism and build in factory support.
+      </p>
+    </div>
+    <div class="col m6 s12 feature">
+      <h5><i class="material-icons">bug_report</i> Easy debugging</h5>
+      <p>Model is updated by explicit calls to service methods which
+        are easy to understand and debug. Step through the call stack from
+        component event handler to model data setter - one function call at the time!
       </p>
     </div>
   </div>

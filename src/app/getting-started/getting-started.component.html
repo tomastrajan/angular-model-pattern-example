@@ -3,17 +3,7 @@
   <div class="row">
     <div class="col s12">
       <h3>Getting started</h3>
-      <p>As the name <strong>"Angular Model Pattern"</strong> says, it started
-        as a pattern
-        not a library. Because of that it is possible to use it in both ways.
-      </p>
-
-      <ol>
-        <li><p>Install <strong>library</strong> using <code>npm i -S
-          ngx-model</code></p></li>
-        <li><p>Use as Pattern by copying the models code in your project</p>
-        </li>
-      </ol>
+      <p>The <code>@angular-extensions/model</code> can be used in both projects using Angular CLI and plain Angular projects with custom build</p>
     </div>
   </div>
 
@@ -23,168 +13,106 @@
       <br>
       <ul class="tabs tabs-fixed-width">
         <li class="tab">
-          <a href="#library" class="active">Use as Library</a>
+          <a href="#cli" class="active">Use with Angular CLI</a>
         </li>
         <li class="tab">
-          <a href="#pattern">Use as Pattern</a></li>
+          <a href="#custom">Use in plain Angular proect</a></li>
       </ul>
     </div>
-    <div id="library" class="col s12">
+    <div id="cli" class="col s12">
       <br>
       <br>
       <div class="row">
         <div class="col s12">
-          <h4>1. Install <code>ngx-model</code></h4>
-          <p>Run <code>npm i -S ngx-model</code> or
-            <code>yarn add ngx-model</code> based on which is your favourite
-            package manager.</p>
+          <h4>1. Install <code>@angular-extensions/model</code></h4>
+          <p>Enter Angular CLI project and run <code>ng add @angular-extensions/model</code>.
+            The library uses new <code>providedIn: 'core'</code> tree-shakeable providers so
+            we can start injecting and using <code>ModelFactory</code> out of the box without need
+            to import any modules or register any providers.
+          </p>
           <br>
         </div>
+      </div>
 
+      <div class="row">
         <div class="col s12">
-          <h4>2. Import and use <code>NgxModelModule</code></h4>
-          <p>Import and use <code>NgxModelModule</code> in you
-            <code>AppModule</code> (or <code>CoreModule</code>)
+          <h4>2. Generate new model service</h4>
+          <p>Create new model service using Angular CLI and provided schematics by running
+            <code>ng g @angular-extensions/model:model examples/todo --items</code>. This will generate service
+            and corresponding test files with basic implementation. The <code>--items</code> flag causes that the
+            model service will work with the collection of items which means it will expose <code>Observable	&lt;Todo[]></code>
+            as its data.
           </p>
-          <ampe-code-block [code]="libraryProvide"></ampe-code-block>
+          <br>
         </div>
+      </div>
 
-        <div class="row">
-          <div class="col s12">
-            <h4>3. Use model in your business service</h4>
-            <p>Import <code>ModelFactory</code> in your service, inject it into
-              constructor using Angular dependency injection mechanism and create
-              model instance.
-            </p>
-            <p>
-              Expose model's data as a variable with descriptive name
-              (eg: <code>this.todos$: Todo[] = this.model.data$</code>) to be
-              consumed by
-              the components which import the service.
-            </p>
-            <p>
-              Implement model mutation inside of self-contained service methods
-              which
-              retrieve model state with <code>this.model.get()</code>,
-              perform necessary mutations (sync or async) and set new state using
-              <code>this.model.set(newData)</code>.
-            </p>
-            <p>Check full example of <code><a
-              href="{{repoUrl}}/src/app/todos/todos.service.ts">todos.service.ts</a></code>
-              on Gihub.</p>
-            <ampe-code-block [code]="libraryBusinessService"></ampe-code-block>
-          </div>
+      <div class="row">
+        <div class="col s12">
+          <h4>3. Generate new component and use the model service</h4>
+          <p>Create new component using Angular CLI and built in Angular schematics by running
+            <code>ng g component examples/todo --inline-template</code>.
+          </p>
+          <p>
+            Adjust component implementation as in the code example below and then
+            use our new <code>&lt;app-todo>&lt;/app-todo></code> component in the template of the existing <code>app.component.html</code>
+            (or wherever it suits you).
+          </p>
+          <p>
+            Please mind that you might be using different application prefix than <code>app-</code> so adjust accordingly.
+          </p>
+          <ampe-code-block [code]="todoComponent"></ampe-code-block>
         </div>
+      </div>
 
-        <div class="row">
-          <div class="col s12">
-            <h4>4. Use service in your components</h4>
-            <p>Inject service into component, subscribe to it's state directly in
-              template using
-              <code>todosService.todos$ | async</code> or explicitly in <code>ngOnInit()</code>
-              method
-              with <code>this.todosService.todos$.subscribe(todos => this.todos =
-                todos)</code>.
-            </p>
-            <p>
-              Don't forget to unsubscribe explicit subscriptions in <code>ngOnDestroy()</code>.
-            </p>
-            <p>Check full example of <code><a
-              href="{{repoUrl}}/src/app/todos/todos.component.ts">todos.component.ts</a></code>
-              and it's template <code><a
-                href="{{repoUrl}}/src/app/todos/todos.component.html">todos.component.html</a></code>
-              on Gihub.</p>
-            <ampe-code-block [code]="fileBusinessComponent"></ampe-code-block>
-          </div>
+      <div class="row">
+        <div class="col s12">
+          <h4>4. Implement additional model service methods</h4>
+          <p>Create additional model service methods following pattern used in the one existing method.</p>
+          <p>Every model method consists of three main parts:</p>
+          <ol>
+            <li>Get current model state with <code>const state = this.model.get()</code></li>
+            <li>Mutate current model state based on your needs</li>
+            <li>Set the new model value using <code>this.model.set(state)</code></li>
+          </ol>
+          <p>Please, have a look into implementation of <a href="https://stackblitz.com/edit/angular-extensions-model?file=src%2Fapp%2Ftodo%2Ftodo.service.ts">Live Demo</a> to see more examples of model service methods.</p>
         </div>
-
       </div>
 
     </div>
-    <div id="pattern" class="col s12">
+    <div id="custom" class="col s12">
       <br>
       <br>
       <div class="row">
         <div class="col s12">
-          <h4>1. Create <code>model.service.ts</code></h4>
-          <p>Create <code><a
-            href="{{repoUrl}}/src/app/core/model/model.service.ts">model.service.ts</a></code>
-            file in your core module with the following content...</p>
-          <ampe-code-block [code]="fileModelService"></ampe-code-block>
+          <h4>1. Install <code>@angular-extensions/model</code></h4>
+          <p>Enter your Angular project and run <code>npm i -S @angular-extensions/model</code>.
+            The library uses new <code>providedIn: 'core'</code> tree-shakeable providers so
+            we can start injecting and using <code>ModelFactory</code> out of the box without need
+            to import any modules or register any providers.
+          </p>
+          <br>
         </div>
       </div>
 
       <div class="row">
         <div class="col s12">
-          <h4>2. Provide model service in your <code>core.module.ts</code></h4>
-          <p>Import <code>MODEL_PROVIDER</code> constant and add it to <code>providers</code>
-            of your <code>CoreModule</code>. (Service can also be provided in
-            <code>AppModule</code> in case you don't use <code>CoreModule</code>)
+          <h4>2. Create new model service</h4>
+          <p>Create new model service file in <code>src/app/examples/todo/todo.service.ts</code>
+            with the following content...
           </p>
-          <ampe-code-block [code]="fileCoreModule"></ampe-code-block>
+          <ampe-code-block [code]="todoService"></ampe-code-block>
         </div>
       </div>
 
       <div class="row">
         <div class="col s12">
-          <h4>3. Use model in your business service</h4>
-          <p>Import <code>ModelFactory</code> in your service, inject it into
-            constructor using Angular dependency injection mechanism and create
-            model instance.
+          <h4>3. Use new model service in one of your components</h4>
+          <p>Use new model service in one of your components as described in point 3 and above in <strong>Using with Angular CLI</strong> section
           </p>
-          <p>
-            Expose model's data as a variable with descriptive name
-            (eg: <code>this.todos$: Todo[] = this.model.data$</code>) to be
-            consumed by
-            the components which import the service.
-          </p>
-          <p>
-            Implement model mutation inside of self-contained service methods
-            which
-            retrieve model state with <code>this.model.get()</code>,
-            perform necessary mutations (sync or async) and set new state using
-            <code>this.model.set(newData)</code>.
-          </p>
-          <ampe-code-block [code]="fileBusinessService"></ampe-code-block>
         </div>
       </div>
 
-      <div class="row">
-        <div class="col s12">
-          <h4>4. Use service in your components</h4>
-          <p>Inject service into component, subscribe to it's state directly in
-            template using
-            <code>todosService.todos$ | async</code> or explicitly in <code>ngOnInit()</code>
-            method
-            with <code>this.todosService.todos$.subscribe(todos => this.todos =
-              todos)</code>.
-          </p>
-          <p>
-            Don't forget to unsubscribe explicit subscriptions in <code>ngOnDestroy()</code>.
-          </p>
-          <p>Check full example of <code><a
-            href="{{repoUrl}}/src/app/todos/todos.component.ts">todos.component.ts</a></code>
-            and it's template <code><a
-              href="{{repoUrl}}/src/app/todos/todos.component.html">todos.component.html</a></code>
-            on Gihub.</p>
-          <ampe-code-block [code]="fileBusinessComponent"></ampe-code-block>
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="col s12">
-          <h4>Optional - Add model service tests</h4>
-          <p>Create <code><a
-            href="{{repoUrl}}/src/app/core/model/model.service.spec.ts">model.service.spec.ts</a></code>
-            file next to your <code>model.service.ts</code> file and populate it
-            with following content. Tests can help you in situation when you
-            want to
-            customize model service to better accommodate to your specific
-            needs.
-          </p>
-          <ampe-code-block [code]="fileModelServiceTests"></ampe-code-block>
-        </div>
-      </div>
 
     </div>
   </div>
