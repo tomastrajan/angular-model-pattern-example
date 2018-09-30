@@ -30,7 +30,7 @@ describe('AboutComponent', () => {
     fixture.detectChanges();
     const compiled = fixture.debugElement.nativeElement;
     expect(compiled.querySelector('h1').textContent)
-      .toContain('Angular Model Pattern');
+      .toContain('Angular Model');
   }));
 
 });
